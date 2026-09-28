@@ -7,7 +7,8 @@ import { LogoMarquee } from "@/components/sections/LogoMarquee";
 import { Problem } from "@/components/sections/Problem";
 import { Platform } from "@/components/sections/Platform";
 import { Process } from "@/components/sections/Process";
-import { Calculator } from "@/components/sections/Calculator";
+import { WhyUs } from "@/components/sections/WhyUs";
+import { Method } from "@/components/sections/Method";
 import { Placements } from "@/components/sections/Placements";
 import { BafaCta, GuaranteeCta } from "@/components/sections/SplitCta";
 import { Stats } from "@/components/sections/Stats";
@@ -42,7 +43,8 @@ export default function Home() {
         <Problem />
         <Platform />
         <Process />
-        <Calculator />
+        <WhyUs />
+        <Method />
         <Placements />
         <BafaCta />
         <Stats />

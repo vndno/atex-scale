@@ -340,15 +340,108 @@ export const site = {
     ],
   },
 
-  // Rechner: Auftragswert × fehlende Aufträge pro Monat × 12
-  calculator: {
-    headline: "Was Ihnen fehlende Aufträge pro Jahr kosten",
-    unit: "/ Jahr",
-    formula: "So gerechnet: durchschnittlicher Auftragswert × fehlende Aufträge pro Monat × 12 Monate",
-    a: { label: "Durchschnittlicher Auftragswert", min: 500, max: 50000, step: 500, default: 8000 },
-    b: { label: "Aufträge, die Ihnen pro Monat fehlen", min: 1, max: 20, step: 1, default: 3, unit: "Aufträge" },
-    multiplier: 12,
-    cta: "Gespräch vereinbaren",
+  // 04 · Warum es funktioniert: links Text + vier Merkmale, rechts Schema „Was Sie bekommen“
+  why: {
+    eyebrow: "04 · Warum es funktioniert",
+    headlineBold: "Erfahrung aus vielen Branchen.",
+    headlineLight: "Ein Team, das bleibt.",
+    text: "Seit 2018 arbeitet die Atex Media Gruppe für Betriebe, Praxen und Kanzleien im Mittelstand. Aus diesen Projekten wissen wir, wie in welcher Branche gesucht wird, welche Botschaft zieht und was eine Anfrage kostet. Darauf baut jeder Markt-Check auf. Betreut wird Ihr Projekt von einem festen Team in Regensburg, nicht von einer Hotline.",
+    features: [
+      { icon: "building" as const, tone: "accent" as const, title: "280+ Betriebe", text: "Handwerk, Praxen, Kanzleien und B2B" }, // TODO prüfen
+      { icon: "chartLine" as const, tone: "navy" as const, title: "Erfahrungswerte", text: "Suchvolumen und Kosten je Branche" },
+      { icon: "users" as const, tone: "success" as const, title: "Festes Team", text: "Beratung, Kampagnen, Foto und Web" },
+      { icon: "eye" as const, tone: "soft" as const, title: "Nachvollziehbar", text: "Jede Anfrage einem Kanal zugeordnet" },
+    ],
+    diagram: {
+      title: "Was Sie bekommen",
+      inputsLabel: "Ihr Markt, vorab geprüft",
+      inputs: ["Werte aus unseren Projekten", "Suchdaten Ihrer Region", "Ihr Angebot und Auftragswert"],
+      engine: { title: "Atex Scale Markt-Check", sub: "Analyse und Kampagnen aus einer Hand", status: "aktiv" },
+      tiles: [
+        { value: "Markt-Score", label: "für Ihre Region" },
+        { value: "Prognose", label: "Anfragen je Monat" },
+        { value: "Zusage", label: "schriftlich" },
+      ],
+      outputsLabel: "Was bei Ihnen ankommt",
+      outputs: ["Geprüfte Anfragen", "Gebuchte Termine", "Neue Aufträge"],
+      footer: "Geplant und betreut von unserem Team in Regensburg",
+    },
+  },
+
+  // 05 · Die Methode: Prinzip (Wiederholung schafft Vertrauen) → schematische Kurve → drei Phasen → drei Wirkprinzipien → Fazit
+  method: {
+    eyebrow: "05 · Die Methode",
+    headlineBold: "Erst sehen, dann vertrauen,",
+    headlineLight: "dann anfragen",
+    text: "Kaum jemand fragt beim ersten Kontakt an. Deshalb begegnet Ihr Wunschkunde Ihrem Angebot mehrmals und auf verschiedenen Kanälen, bis er so weit ist.",
+    principle: {
+      eyebrow: "Warum das wirkt",
+      title: "Vertrautheit entsteht durch Wiederholung",
+      text: "Was wir öfter sehen, halten wir für vertrauter und glaubwürdiger, auch ohne bewusst darüber nachzudenken. Die Psychologie nennt das Mere-Exposure-Effekt. Für Ihr Angebot heißt das: Wer Ihren Betrieb schon ein paarmal gesehen hat, ruft eher bei Ihnen an als bei einem Mitbewerber, den er nicht kennt.",
+      stages: [
+        { count: "1. Kontakt", title: "Gesehen", text: "Das Angebot fällt im Feed oder in der Suche auf" },
+        { count: "2 bis 3 Kontakte", title: "Erinnert", text: "Der Name Ihres Betriebs kommt bekannt vor" },
+        { count: "4 bis 6 Kontakte", title: "Geprüft", text: "Fotos, Bewertungen und Webseite werden angesehen" },
+        { count: "ab 7 Kontakten", title: "Angefragt", text: "Der Kontakt meldet sich bei Ihnen" },
+      ],
+    },
+    // Schematische Kurve, keine Messwerte (x = Kontakte 0–9, y = 0–100)
+    chart: {
+      title: "Anfragebereitschaft nach Kontakten",
+      sub: "Je öfter jemand Ihren Betrieb wahrnimmt, desto eher meldet er sich.",
+      badge: "Schematische Darstellung",
+      yLabel: "Bereitschaft anzufragen",
+      xLabel: "Kontakte mit Ihrem Angebot",
+      points: [
+        { x: 1, y: 14, label: "Gesehen" },
+        { x: 3, y: 40, label: "Erinnert" },
+        { x: 5, y: 64, label: "Geprüft" },
+        { x: 8, y: 86, label: "Angefragt" },
+      ],
+    },
+    phasesTitle: "Drei Phasen, drei Ziele",
+    phases: [
+      {
+        label: "Phase 1",
+        tag: "Aufmerksam machen",
+        title: "Erster Kontakt über ein konkretes Angebot",
+        text: "Eine klare Botschaft zu einem Problem, das Ihr Kunde gerade hat. Zum Beispiel: Wärmepumpe statt Ölheizung, mit Förderung.",
+        channels: ["Instagram-Feed", "Google-Suche", "YouTube"],
+        time: "Woche 1 bis 3", // TODO prüfen
+        goal: "wahrgenommen werden",
+      },
+      {
+        label: "Phase 2",
+        tag: "Vertrauen aufbauen",
+        title: "Wiederansprache mit Einblicken und Beweisen",
+        text: "Wer Ihre Anzeige gesehen hat, sieht jetzt fertige Projekte, Ihr Team und Bewertungen aus der Region.",
+        channels: ["Instagram-Story", "Facebook", "Google-Display"],
+        time: "Woche 4 bis 8", // TODO prüfen
+        goal: "Vertrauen gewinnen",
+      },
+      {
+        label: "Phase 3",
+        tag: "Zur Anfrage führen",
+        title: "Direkte Einladung mit einfachem nächsten Schritt",
+        text: "Ein konkreter Anlass und ein kurzer Weg: Termin wählen, Formular in zwei Minuten oder eine Nachricht per WhatsApp.",
+        channels: ["Retargeting", "WhatsApp", "Landingpage"],
+        time: "ab Woche 9", // TODO prüfen
+        goal: "Anfrage auslösen",
+      },
+    ],
+    timeLabel: "Zeitraum",
+    goalLabel: "Ziel",
+    channelsLabel: "Kanäle",
+    triggersEyebrow: "Was dahinter steckt",
+    triggers: [
+      { title: "Relevanz", text: "Eine Botschaft zu einem akuten Problem wird gelesen. Allgemeine Imagewerbung wird überscrollt." },
+      { title: "Beweis durch andere", text: "Fertige Projekte und Bewertungen aus der Nachbarschaft nehmen die Sorge, an den Falschen zu geraten." },
+      { title: "Ein einfacher nächster Schritt", text: "Je kürzer der Weg zur Anfrage, desto mehr Menschen gehen ihn. Zwei Minuten statt zehn Pflichtfelder." },
+    ],
+    banner: {
+      highlight: "Jede Phase hat eigene Anzeigen und ein eigenes Ziel.",
+      text: "Wir werten laufend aus, welche Kombination die meisten Termine bringt, und verschieben das Budget dorthin.",
+    },
   },
 
   placements: {
