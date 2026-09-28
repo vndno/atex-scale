@@ -106,18 +106,47 @@ export const site = {
     links: [
       { label: "Leistungen", href: "/#system" },
       { label: "Über uns", href: "/ueber-uns" },
-      { label: "Referenzen", href: "/#ergebnisse" },
+      { label: "Referenzen", href: "/#referenzen" },
       { label: "Karriere", href: "https://www.atex-media.de/karriere" }, // Stellen bei Atex Media (öffnet in neuem Tab)
       { label: "Kontakt", href: "/kontakt" },
     ],
-    cta: "Kontaktieren",
+    // Zweiter Button (Rahmen): Schwestermarke AtexJobs für Mitarbeitergewinnung
+    secondary: { label: "Mitarbeiter gewinnen", href: "https://www.atex-jobs.de" },
+    cta: "Gespräch vereinbaren",
   },
 
   hero: {
+    eyebrow: "Neukundengewinnung für den Mittelstand",
     headlineBold: "Neue Kunden gewinnen",
     headlineLight: "mit schriftlicher Zusage",
-    text: "Seit 2018 bringen wir Betrieben, Praxen und Kanzleien im Mittelstand Anfragen, die zu Aufträgen werden. Aus diesen Erfahrungswerten prüfen wir vorab, wie viel Nachfrage in Ihrer Region steckt, und sagen Ihnen das Ergebnis schriftlich zu.",
+    text: "Kampagnen, Landingpage und die Prüfung jeder Anfrage kommen bei uns aus einer Hand. Bei Ihnen landen Termine mit Menschen, die wirklich kaufen wollen. Wie viele es werden, rechnen wir vorher für Ihre Region aus.",
     cta: "Gespräch vereinbaren",
+    ctaSecondary: { label: "Referenzen ansehen", href: "#referenzen" },
+    // Porträtreihe unter den Buttons (Dateien in /public/images/kunden)
+    proof: {
+      avatars: ["/images/kunden/01.jpg", "/images/kunden/02.jpg", "/images/kunden/03.jpg", "/images/kunden/04.jpg"],
+      value: "280+ Betriebe und Kanzleien", // TODO prüfen
+      label: "arbeiten mit der Atex Media Gruppe",
+    },
+    // Netzwerk-Grafik: links die Quellen, in der Mitte der Anfragen-Eingang, rechts das Ergebnis.
+    // x/y = Mittelpunkt der Karte auf einer Zeichenfläche von 1200 × 460. kind: source (orange) · result (grün) · score (Zusage)
+    graph: {
+      center: { title: "Atex Scale", sub: "Anfragen-Eingang", status: "läuft" },
+      nodes: [
+        { title: "Meta-Kampagne", sub: "Facebook & Instagram", kind: "source" as const, x: 190, y: 96, image: "" },
+        { title: "Google-Suche", sub: "Suche & Maps", kind: "source" as const, x: 130, y: 290, image: "" },
+        { title: "Landingpage", sub: "Anfrage in 2 Minuten", kind: "source" as const, x: 360, y: 398, image: "" },
+        { title: "Neue Anfrage", sub: "Badsanierung · Regensburg", kind: "source" as const, x: 440, y: 44, image: "/images/profil/13.jpg" },
+        { title: "Zusage möglich", sub: "Markt-Score 8.4", kind: "score" as const, x: 800, y: 58, image: "" },
+        { title: "Termin gebucht", sub: "Dienstag, 14:00 Uhr", kind: "result" as const, x: 1050, y: 178, image: "/images/profil/04.jpg" },
+        { title: "Geprüft", sub: "Bedarf, Region, Budget", kind: "result" as const, x: 860, y: 392, image: "" },
+      ],
+    },
+    features: [
+      { icon: "filter" as const, title: "Geprüfte Anfragen.", text: "Jede Anfrage prüfen wir binnen 24 Stunden auf Bedarf, Region und Budget." }, // TODO prüfen (24 h)
+      { icon: "calendar" as const, title: "Termine im Kalender.", text: "Wer passt, bekommt direkt einen Termin bei Ihnen. Kein Hinterhertelefonieren." },
+      { icon: "shield" as const, title: "Zusage auf Papier.", text: "Vor dem Start sagen wir Ihnen eine Anzahl Anfragen schriftlich zu." },
+    ],
     overlayScoreLabel: "Markt-Score",
     // Zwei Zustände je Betrieb: oranger Rahmen + "Zusage möglich" oder grüner Rahmen + "Kampagne läuft"
     status: {
@@ -650,7 +679,7 @@ export const site = {
       items: [
         { label: "Startseite", href: "/" },
         { label: "Leistungen", href: "/#system" },
-        { label: "Referenzen", href: "/#ergebnisse" },
+        { label: "Referenzen", href: "/#referenzen" },
         { label: "Kundenreise", href: "/#karriere" },
         { label: "Über uns", href: "/ueber-uns" },
         { label: "Landingpages", href: "/#karriereseite" },

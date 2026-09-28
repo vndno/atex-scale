@@ -34,7 +34,7 @@ export function Placements() {
   }, [n, p.feedIntervalMs]);
 
   return (
-    <section id="ergebnisse" className="section-y bg-surface">
+    <section id="referenzen" className="section-y bg-surface">
       <div className="container-x">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <Heading eyebrow={p.eyebrow} bold={p.headlineBold} light={p.headlineLight} />

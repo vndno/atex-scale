@@ -39,8 +39,11 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
-          <Button href={site.contact.bookingHref} variant="outline" size="sm" arrow={false}>
+        <div className="hidden items-center gap-3 lg:flex">
+          <Button href={site.nav.secondary.href} variant="outline" size="sm" arrow={false} className="hidden xl:inline-flex">
+            {site.nav.secondary.label}
+          </Button>
+          <Button href={site.contact.bookingHref} variant="dark" size="sm" arrow={false}>
             {site.nav.cta}
           </Button>
         </div>
@@ -69,9 +72,12 @@ export function Navbar() {
                 {l.label}
               </Link>
             ))}
-            <div className="pt-3">
+            <div className="flex flex-col gap-2 pt-3">
               <Button href={site.contact.bookingHref} variant="dark" className="w-full justify-center">
-                {site.hero.cta}
+                {site.nav.cta}
+              </Button>
+              <Button href={site.nav.secondary.href} variant="outline" arrow={false} className="w-full justify-center">
+                {site.nav.secondary.label}
               </Button>
             </div>
           </nav>

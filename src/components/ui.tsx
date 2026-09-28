@@ -44,6 +44,14 @@ export function Button({
       </a>
     );
   }
+  // Externe Ziele (z. B. AtexJobs, Referenzen auf atex-media.de) öffnen in neuem Tab
+  if (href.startsWith("http")) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
+        {inner}
+      </a>
+    );
+  }
   return (
     <Link href={href} className={cls}>
       {inner}
