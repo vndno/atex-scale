@@ -9,11 +9,11 @@ import { Platform } from "@/components/sections/Platform";
 import { Process } from "@/components/sections/Process";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { Method } from "@/components/sections/Method";
-import { Placements } from "@/components/sections/Placements";
+import { Audiences } from "@/components/sections/Audiences";
+import { CaseStudy } from "@/components/sections/CaseStudy";
 import { BafaCta, GuaranteeCta } from "@/components/sections/SplitCta";
 import { Stats } from "@/components/sections/Stats";
 import { Journey, Faq } from "@/components/sections/Accordions";
-import { CareerPage } from "@/components/sections/CareerPage";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Footer } from "@/components/sections/Footer";
 
@@ -45,12 +45,12 @@ export default function Home() {
         <Process />
         <WhyUs />
         <Method />
-        <Placements />
+        <Audiences />
+        <CaseStudy />
         <BafaCta />
         <Stats />
         <GuaranteeCta />
         <Journey available={journeyImages} />
-        <CareerPage />
         <Faq />
         <FinalCta />
       </main>

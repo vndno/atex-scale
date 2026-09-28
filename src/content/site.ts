@@ -444,39 +444,74 @@ export const site = {
     },
   },
 
-  placements: {
-    eyebrow: "Laufende Projekte",
-    headlineBold: "Angebote, für die wir",
-    headlineLight: "Anfragen liefern",
-    text: "Ein Ausschnitt aus laufenden und abgeschlossenen Projekten, quer durch Handwerk, Praxis, Kanzlei und Dienstleistung.",
-    footnote: "Angaben aus laufenden Projekten. Firmennamen auf Wunsch unserer Kunden nicht genannt.",
-    live: "Wird laufend ergänzt",
-    columns: { role: "Angebot", industry: "Branche · Ort", days: "Erster Termin nach", applicants: "Anfragen / Monat" },
-    // Einheiten hinter den Zahlen (Desktop / Mobil)
-    unitDays: "Tagen",
-    unitCount: "Anfragen",
-    unitCountShort: "Anfr.",
-    visibleRows: 6,
-    feedIntervalMs: 3200,
-    // TODO durch echte Projekte ersetzen
-    items: [
-      { role: "Badsanierung", field: "SHK-Betrieb", city: "Regensburg, BY", days: 9, applicants: 27, image: "/images/profil/13.jpg" },
-      { role: "Steuerberatung für Ärzte", field: "Steuerkanzlei", city: "München, BY", days: 14, applicants: 11, image: "/images/profil/04.jpg" },
-      { role: "PV-Anlage mit Speicher", field: "Elektrobetrieb", city: "Nürnberg, BY", days: 7, applicants: 34, image: "/images/profil/15.jpg" },
-      { role: "Dachsanierung", field: "Dachdeckerei", city: "Ingolstadt, BY", days: 11, applicants: 19, image: "/images/profil/44.jpg" },
-      { role: "Implantologie", field: "Zahnarztpraxis", city: "Landshut, BY", days: 12, applicants: 16, image: "/images/profil/41.jpg" },
-      { role: "Wärmepumpe", field: "Heizungsbau", city: "Passau, BY", days: 8, applicants: 31, image: "/images/profil/14.jpg" },
-      { role: "Ambulante Pflege", field: "Pflegedienst", city: "Augsburg, BY", days: 13, applicants: 22, image: "/images/profil/08.jpg" },
-      { role: "Firmenumzüge", field: "Spedition", city: "Straubing, BY", days: 10, applicants: 18, image: "/images/profil/22.jpg" },
-      { role: "Energieberatung", field: "Ingenieurbüro", city: "Deggendorf, BY", days: 15, applicants: 14, image: "/images/profil/26.jpg" },
-      { role: "Arbeitsrecht für Arbeitgeber", field: "Anwaltskanzlei", city: "Regensburg, BY", days: 16, applicants: 9, image: "/images/profil/38.jpg" },
-      { role: "Einbauküchen", field: "Schreinerei", city: "Cham, BY", days: 12, applicants: 21, image: "/images/profil/18.jpg" },
-      { role: "Wartungsverträge", field: "Gebäudetechnik", city: "Amberg, BY", days: 9, applicants: 24, image: "/images/profil/19.jpg" },
-      { role: "Gewerbekunden-Leasing", field: "Autohaus", city: "Erlangen, BY", days: 11, applicants: 29, image: "/images/profil/07.jpg" },
-      { role: "Fensteraustausch", field: "Fensterbau", city: "Weiden, BY", days: 8, applicants: 26, image: "/images/profil/11.jpg" },
-      { role: "Hautkrebs-Vorsorge", field: "Hautarztpraxis", city: "Freising, BY", days: 10, applicants: 33, image: "/images/profil/21.jpg" },
-      { role: "Metallbau für Industrie", field: "Metallbau", city: "Rosenheim, BY", days: 18, applicants: 8, image: "/images/profil/23.jpg" },
+  // 06 · Privat- und Geschäftskunden: links Text + zwei Karten (B2C/B2B), rechts Foto-Karte Erstgespräch
+  audiences: {
+    eyebrow: "06 · Privat- und Geschäftskunden",
+    headlineBold: "Für Privatkunden,",
+    headlineLight: "genauso wie für Geschäftskunden",
+    text: "Ob jemand ein neues Bad plant oder ein Unternehmen einen Steuerberater sucht: Ohne Vertrauen fällt keine Entscheidung. Der Weg dahin ist unterschiedlich lang, der Ablauf dahinter bleibt derselbe.",
+    text2: "Handwerksbetriebe, Praxen, Kanzleien und Ingenieurbüros setzen auf denselben Mechanismus: sichtbar sein, bis der Bedarf da ist, und dann als Erste sauber antworten.",
+    groups: [
+      {
+        tag: "Privatkunden · B2C",
+        tone: "accent" as const,
+        title: "Schnelle Entscheidung, viel Vergleich",
+        text: "Wer ein Angebot sucht, holt oft drei ein. Den Auftrag bekommt, wer schnell antwortet und vertrauenswürdig wirkt.",
+        items: ["Handwerk und Sanierung", "Heizung, Solar und Energie", "Zahnarzt- und Arztpraxen", "Pflege und Gesundheit"],
+      },
+      {
+        tag: "Geschäftskunden · B2B",
+        tone: "navy" as const,
+        title: "Lange Entscheidung, mehrere Beteiligte",
+        text: "Entscheider vergleichen über Wochen. Regelmäßige Präsenz sorgt dafür, dass Sie gefragt werden, wenn der Bedarf entsteht.",
+        items: ["Steuer- und Anwaltskanzleien", "Ingenieur- und Planungsbüros", "Software und IT", "Industrie und Zulieferer"],
+      },
     ],
+    media: {
+      image: "/images/ueber-uns/beratung.jpg",
+      alt: "Zwei Kollegen von Atex Media lachen bei der Beratung",
+      label: "Erstgespräch",
+      person: { name: "Christian Hopfner", role: "Strategieberatung", image: "/images/team/christian-hopfner-avatar.jpg" },
+      text: "In 15 Minuten klären wir, wie Ihre Kunden suchen und welcher Weg für Ihr Angebot passt. Kostenlos und ohne Verkaufsgespräch.",
+      cta: { label: "Termin wählen", href: "/kontakt" },
+    },
+  },
+
+  // 07 · Aus der Praxis: Case Study H24 (Inhalte nach atex-media.de/referenzen/h24)
+  caseStudy: {
+    eyebrow: "07 · Aus der Praxis",
+    client: "H24 GmbH",
+    headlineBold: "H24: Bundesweit Anfragen",
+    headlineLight: "für eine B2B-Software",
+    intro: "H24 entwickelt DSGVO-konforme KI-Chatbots für Unternehmen und Behörden. Webseite, Kampagnen und Vertrieb liefen nebeneinander her. Anfragen kamen unregelmäßig und mussten von Hand weitergegeben werden.",
+    text: "Wir haben den Auftritt neu aufgestellt, je Produkt eine eigene Landingpage für die Kampagnen gebaut und Zahlungsabwicklung, CRM und Tracking angebunden. Jede Anfrage landet seitdem automatisch dort, wo sie bearbeitet wird.",
+    factsTitle: "Eckdaten des Projekts",
+    facts: [
+      { value: "Bundesweit", label: "Zielmarkt im B2B" },
+      { value: "2 Produkte", label: "mit eigener Landingpage" },
+      { value: "Mehrjährig", label: "in Zusammenarbeit" }, // TODO prüfen (Startjahr)
+    ],
+    points: [
+      { icon: "target" as const, title: "Geschärfte Positionierung", text: "Ein Auftritt, der beide Produkte klar voneinander abgrenzt" },
+      { icon: "megaphone" as const, title: "Landingpage je Produkt", text: "Eigene Seiten als Ziel für die Google-Ads-Kampagnen" },
+      { icon: "link" as const, title: "CRM und Tracking angebunden", text: "Anfragen laufen ohne Umweg direkt in den Vertrieb" },
+    ],
+    servicesTitle: "Leistungen im Projekt",
+    services: ["Landingpages", "Google Ads", "Webseite", "CRM-Anbindung"],
+    image: { src: "/images/referenzen/h24.jpg", alt: "Landingpage von H24 am Desktop und Smartphone" }, // TODO Bild ablegen (Querformat 16:10, ~1200×750); bis dahin Platzhalter
+    caption: "Landingpages, Kampagnen und CRM in einem Ablauf",
+    industriesTitle: "Branchen, für die wir arbeiten",
+    industries: [
+      { name: "Handwerk und Sanierung", tag: "B2C" },
+      { name: "Heizung und Energie", tag: "B2C + B2B" },
+      { name: "Zahnarzt- und Arztpraxen", tag: "B2C" },
+      { name: "Pflege und Gesundheit", tag: "B2C" },
+      { name: "Steuer und Recht", tag: "B2B + B2C" },
+      { name: "Ingenieurbüros", tag: "B2B" },
+      { name: "Software und IT", tag: "B2B" },
+      { name: "Industrie und Zulieferer", tag: "B2B" },
+    ],
+    link: { label: "Ganze Referenz lesen", href: "https://www.atex-media.de/referenzen/h24" },
   },
 
   bafa: {
@@ -621,59 +656,6 @@ export const site = {
     necessaryOnly: "Nur notwendige",
     change: "Auswahl ändern",
     footerLink: "Cookies bearbeiten",
-  },
-
-  // Sektion "Landingpage": was wir bauen, Bausteine zum Zusammenstellen (Warenkorb), Referenz H24
-  careerPage: {
-    eyebrow: "Landingpage",
-    headlineBold: "Aus Klicks",
-    headlineLight: "werden Anfragen",
-    text: "In wenigen Sekunden fällt die Entscheidung: anfragen oder weiterscrollen. Wir bauen Landingpages, die ein Angebot auf den Punkt bringen, auf dem Handy funktionieren und die Anfrage auf zwei Minuten verkürzen. Die Anfragen landen direkt in unserer Qualifizierung.",
-    pillars: [
-      {
-        title: "Alles aus einer Hand",
-        text: "Konzept, Texte, Fotos, Programmierung, Tracking. Die Seite läuft auf Ihrer eigenen Adresse, um Technik, Pflege und neue Angebote kümmern wir uns.",
-      },
-      {
-        title: "Wer daran arbeitet",
-        text: "Berater, Texter, Fotografen und Entwickler der Atex Media Gruppe. Seit 2018 im Mittelstand unterwegs, über 280 Betriebe und Kanzleien begleitet.", // TODO prüfen
-      },
-      {
-        title: "Aufbau mit Ziel",
-        text: "Jede Seite folgt einer Struktur, die sich bewährt hat: erst Vertrauen aufbauen, dann zur Anfrage führen. Gestaltet in Ihren Farben.",
-      },
-    ],
-    cta: "Landingpage besprechen",
-    // Referenz, Inhalte von atex-media.de/referenzen/h24
-    caseStudy: {
-      eyebrow: "Aus der Praxis · B2B-Software",
-      client: "H24 GmbH",
-      title: "Wie ein Software-Anbieter bundesweit Anfragen gewinnt",
-      intro: "H24 entwickelt DSGVO-konforme KI-Chatbots für Unternehmen und Behörden. Wir haben Webseite, Landingpages und Kampagnen zu einem Ablauf verbunden, der Anfragen aus ganz Deutschland in den Vertrieb bringt.",
-      facts: [
-        { value: "Bundesweit", label: "Zielmarkt im B2B" },
-        { value: "2 Produkte", label: "mit eigener Landingpage" },
-        { value: "Mehrjährig", label: "in Zusammenarbeit" }, // TODO prüfen (Startjahr)
-      ],
-      services: ["Landingpages", "Google Ads", "Webseite", "CRM-Anbindung"],
-      blocks: [
-        {
-          title: "Die Ausgangslage",
-          text: "Zwei Produkte am Markt, erste Landingpages für Google Ads, aber Webseite, Kampagnen und Vertrieb liefen nebeneinander her. Anfragen kamen unregelmäßig und mussten von Hand weiterverarbeitet werden.",
-        },
-        {
-          title: "Was wir gemacht haben",
-          text: "Neuer Auftritt mit geschärfter Produktpositionierung, eigene Landingpages je Produkt für die Kampagnen, dazu Zahlungsabwicklung, CRM-Anbindung und Tracking, damit jede Anfrage automatisch dort landet, wo sie bearbeitet wird.",
-        },
-        {
-          title: "Was dabei herauskam",
-          text: "Ein durchgehender Ablauf von der Anzeige bis zum Vertrieb. Anfragen kommen planbar über die Landingpages, laufen direkt ins CRM und lassen sich skalieren, ohne dass jemand im Büro nachsortieren muss.",
-        },
-      ],
-      image: { src: "/images/referenzen/h24.jpg", alt: "Landingpage von H24 am Desktop und Smartphone" }, // TODO Bild ablegen (Hochformat 4:5); bis dahin Platzhalter
-      link: { label: "Ganze Referenz lesen", href: "https://www.atex-media.de/referenzen/h24" },
-      caption: "Landingpages, Kampagnen und CRM in einem Ablauf",
-    },
   },
 
   faq: {
