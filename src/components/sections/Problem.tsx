@@ -1,129 +1,125 @@
 import { site } from "@/content/site";
+import { Button, Heading } from "@/components/ui";
 import { Icon } from "@/components/icons";
-import { ScaleToFit } from "@/components/ScaleToFit";
 
 /**
- * "Warum die Stelle immer noch offen ist" – zwei Karten:
- * links Fluktuation (Dashboard-Mockup mit Kündigungen), rechts Kosten (Handy-Mockup mit Ausgaben).
+ * 01 · Der Engpass: drei Karten mit je einer kleinen Grafik oben (Säulen, Nachrichten, Dienstleister-Kette),
+ * darunter ein dunkles Fazit-Band mit Button.
  */
 export function Problem() {
   const p = site.problem;
-  const [a, accent, b] = p.headline;
   return (
-    <section className="section-y bg-white">
+    <section id="engpass" className="section-y bg-white">
       <div className="container-x">
-        <h2 className="h-section max-w-[16ch] text-ink">
-          {a}
-          <span className="h-light">{accent}</span>
-          {b}
-        </h2>
+        <Heading eyebrow={p.eyebrow} bold={p.headlineBold} light={p.headlineLight} className="max-w-[760px]" />
 
-        <div className="mt-12 grid gap-6 *:min-w-0 lg:grid-cols-2">
-          <ChurnCard />
-          <CostCard />
+        <div className="mt-12 grid gap-5 *:min-w-0 lg:grid-cols-3">
+          <Card title={p.referrals.title} text={p.referrals.text}>
+            <ReferralChart />
+          </Card>
+          <Card title={p.fit.title} text={p.fit.text}>
+            <Messages />
+          </Card>
+          <Card title={p.tools.title} text={p.tools.text}>
+            <ToolChain />
+          </Card>
+        </div>
+
+        <div className="mt-6 flex flex-col gap-5 rounded-2xl bg-navy px-6 py-6 text-white sm:px-8 md:flex-row md:items-center md:justify-between">
+          <p className="max-w-[760px] text-[16px] leading-relaxed text-on-navy-muted">
+            {p.banner.before} <span className="font-semibold text-accent">{p.banner.highlight}</span>
+            {p.banner.after}
+          </p>
+          <Button href={site.contact.bookingHref} variant="light" className="self-start md:self-auto">
+            {p.banner.cta}
+          </Button>
         </div>
       </div>
     </section>
   );
 }
 
-/* --------------------------------------------------- Karte 1: Fluktuation */
-function ChurnCard() {
-  const c = site.problem.cards.churn;
-  const r = 22;
-  const circ = 2 * Math.PI * r;
+function Card({ title, text, children }: { title: string; text: string; children: React.ReactNode }) {
   return (
-    <article className="flex flex-col rounded-2xl bg-surface p-5 sm:p-9">
-      <h3 className="max-w-[20ch] text-[clamp(1.4rem,2vw,1.75rem)] font-semibold leading-snug text-ink">{c.title}</h3>
-      <p className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-muted">{c.text}</p>
-
-      {/* Dashboard-Mockup: unter 420 px Breite wird es proportional verkleinert statt umzubrechen */}
-      <ScaleToFit base={420} className="mt-8">
-      <div className="rounded-2xl bg-white p-5 shadow-soft sm:p-6">
-        <div className="flex gap-2 text-[14px]">
-          {c.tabs.map((t, i) => (
-            <span key={t} className={`rounded-full px-4 py-2 ${i === 0 ? "bg-chip font-semibold text-ink" : "text-muted-3"}`}>
-              {t}
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-6 grid grid-cols-2 gap-6">
-          <div className="flex items-center gap-4">
-            <svg viewBox="0 0 56 56" className="size-14 shrink-0 -rotate-90">
-              <circle cx="28" cy="28" r={r} stroke="#e5e7eb" strokeWidth="7" fill="none" />
-              <circle cx="28" cy="28" r={r} stroke="#f26a4a" strokeWidth="7" fill="none" strokeDasharray={`${circ * c.kpiOpen.ratio} ${circ}`} strokeLinecap="round" />
-            </svg>
-            <div>
-              <p className="text-[13px] text-muted">{c.kpiOpen.label}</p>
-              <p className="text-[22px] font-semibold leading-tight text-accent">{c.kpiOpen.value}</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="flex h-12 items-end gap-1.5">
-              {[48, 30, 14].map((h, i) => (
-                <span key={i} className="w-2 rounded-t-sm bg-line-soft" style={{ height: h }} />
-              ))}
-            </div>
-            <div>
-              <p className="text-[13px] text-muted">{c.kpiDuration.label}</p>
-              <p className="text-[22px] font-semibold leading-tight text-muted-2">{c.kpiDuration.value}</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-6 grid grid-cols-[1.3fr_1fr_0.9fr] px-3 text-[13px] text-muted">
-          <span>{c.columns.role}</span>
-          <span>{c.columns.filled}</span>
-          <span className="text-right font-semibold text-ink">{c.columns.status}</span>
-        </div>
-        <ul className="mt-2 flex flex-col">
-          {c.rows.map((row, i) => (
-            <li
-              key={row.role}
-              className={`grid grid-cols-[1.3fr_1fr_0.9fr] items-center rounded-lg px-3 py-3 text-[14px] ${row.highlight ? "bg-surface-3 text-ink" : "border-t border-line-soft text-muted"}`}
-            >
-              <span className="flex items-center gap-3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={row.image} alt="" className="size-9 rounded-md object-cover" />
-                {row.role}
-              </span>
-              <span>{row.filled}</span>
-              <span className={`flex items-center justify-end gap-2 font-semibold ${row.highlight ? "text-ink" : "text-muted-2"}`}>
-                <span className={`size-2 rounded-full ${row.highlight ? "bg-[#e5484d]" : "bg-line"}`} />
-                {row.status}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      </ScaleToFit>
+    <article className="flex flex-col rounded-2xl border border-line-soft bg-surface-2 p-5 sm:p-6">
+      {/* Grafikfläche: feste Höhe, damit alle drei Karten gleich aufgebaut sind */}
+      <div className="flex h-[180px] flex-col justify-center overflow-hidden rounded-xl bg-white p-4 shadow-soft">{children}</div>
+      <h3 className="mt-6 text-[19px] font-semibold leading-snug text-ink">{title}</h3>
+      <p className="mt-2 text-[14px] leading-relaxed text-muted">{text}</p>
     </article>
   );
 }
 
-/* -------------------------------------------------------- Karte 2: Kosten */
-function CostCard() {
-  const c = site.problem.cards.cost;
-  const app = c.app;
+/* Karte 1: Säulen je Monat, ein Monat fast leer (orange) */
+function ReferralChart() {
+  const r = site.problem.referrals;
+  const max = Math.max(...r.values);
   return (
-    <article className="relative flex flex-col overflow-hidden rounded-2xl bg-surface p-5 sm:p-9">
-      <h3 className="max-w-[20ch] text-[clamp(1.4rem,2vw,1.75rem)] font-semibold leading-snug text-ink">{c.title}</h3>
-      <p className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-muted">{c.text}</p>
-
-      {/* Fertiges Mockup aus Figma: Handy in der Hand mit der Ausgaben-Übersicht im Display.
-          Die Höhe richtet sich nach dem Platz, der unter Überschrift und Text übrig bleibt. */}
-      <div className="mt-8 flex min-h-[280px] flex-1 items-end justify-center">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/mockups/hand-phone-v3.png"
-          alt="Hand hält ein Smartphone mit der Übersicht der Recruiting-Ausgaben"
-          width={1430}
-          height={1238}
-          loading="lazy"
-          className="max-h-full w-auto max-w-[122%] object-contain object-bottom"
-        />
+    <div className="flex h-full flex-col">
+      <div className="flex items-center justify-between">
+        <p className="text-[12px] font-semibold text-muted-2">{r.chartLabel}</p>
+        <span className="rounded-full bg-accent/10 px-2 py-0.5 text-[11px] font-semibold text-accent-strong">{r.lowNote}</span>
       </div>
-    </article>
+      <div className="mt-3 flex flex-1 items-end gap-3">
+        {r.values.map((v, i) => (
+          <div key={r.months[i]} className="flex h-full flex-1 flex-col items-center justify-end gap-1.5">
+            <span
+              className={`w-full max-w-[34px] rounded-t-md ${i === r.lowIndex ? "bg-accent" : "bg-line-soft"}`}
+              style={{ height: `${Math.max((v / max) * 100, 7)}%` }}
+            />
+            <span className={`text-[11px] ${i === r.lowIndex ? "font-semibold text-accent-strong" : "text-muted-3"}`}>{r.months[i]}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* Karte 2: zwei eingehende Nachrichten mit rotem Status */
+function Messages() {
+  const f = site.problem.fit;
+  return (
+    <ul className="flex flex-col gap-3">
+      {f.messages.map((m, i) => (
+        <li key={m.text} className={`flex items-start gap-2.5 ${i % 2 ? "pl-6" : "pr-6"}`}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={m.image} alt="" width={28} height={28} className="mt-0.5 size-7 shrink-0 rounded-full object-cover" />
+          <div className="min-w-0 rounded-xl rounded-tl-sm bg-surface-3 px-3 py-2">
+            <p className="text-[13px] leading-snug text-ink">„{m.text}“</p>
+            <span className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-danger-bg px-2 py-0.5 text-[10px] font-semibold text-danger-ink">
+              <Icon.x className="size-2.5" strokeWidth={3} />
+              {m.tag}
+            </span>
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/* Karte 3: Dienstleister-Kette, zwei Übergaben reißen ab */
+function ToolChain() {
+  const t = site.problem.tools;
+  return (
+    <div className="flex flex-col gap-2.5">
+      {t.links.map((l) => (
+        <div key={l.from} className="flex items-center gap-2 text-[12px] font-medium text-ink">
+          <span className="shrink-0 rounded-md border border-line-soft bg-surface-2 px-2 py-1">{l.from}</span>
+          <span className="relative flex flex-1 items-center">
+            <span className={`h-0 w-full border-t-2 ${l.broken ? "border-dashed border-[#f3a5a5]" : "border-line-soft"}`} />
+            {l.broken && (
+              <span className="absolute left-1/2 grid size-4 -translate-x-1/2 place-items-center rounded-full bg-danger-bg text-danger-ink">
+                <Icon.x className="size-2.5" strokeWidth={3} />
+              </span>
+            )}
+          </span>
+          <span className="shrink-0 rounded-md border border-line-soft bg-surface-2 px-2 py-1">{l.to}</span>
+        </div>
+      ))}
+      <p className="mt-1 flex items-center gap-1.5 text-[12px] font-semibold text-danger-ink">
+        <span className="size-1.5 rounded-full bg-[#e5484d]" aria-hidden />
+        {t.alert}
+      </p>
+    </div>
   );
 }

@@ -177,8 +177,10 @@ export const site = {
   },
 
   logos: {
-    text: "Mehr als 280 Betriebe und Kanzleien arbeiten mit der Atex Media Gruppe", // TODO prüfen
-    // Logos als SVG/PNG in /public/images/logos ablegen
+    // Dunkles Band unter dem Hero: Überschrift oben, Logos laufen durch, Hinweis darunter
+    text: "Betriebe und Kanzleien, die mit der Atex Media Gruppe arbeiten",
+    more: "und mehr als 280 weitere im gesamten DACH-Raum", // TODO prüfen
+    // Logos als SVG/PNG in /public/images/logos ablegen (werden auf dem dunklen Band weiß dargestellt)
     items: [
       { name: "Energie Optimal", src: "/images/logos/energie-optimal.svg" },
       { name: "Infinno", src: "/images/logos/infinno.svg" },
@@ -189,47 +191,45 @@ export const site = {
     ],
   },
 
+  // 01 · Drei Probleme, jede Karte mit kleiner Grafik oben; darunter dunkles Fazit-Band mit Button
   problem: {
-    // Überschrift: der zweite Teil wird dünn (Highlight in Marken-Optik) gesetzt
-    headline: ["Warum die Anfragen ", "ausbleiben", ""],
-    cards: {
-      churn: {
-        title: "Anzeige geschaltet. Und das Telefon bleibt still.",
-        text: "Klicks kommen, Anfragen kaum. Und wer anfragt, will nur einen Preis vergleichen oder wohnt zwei Stunden entfernt. Eine Anfrage zählt für uns erst, wenn Bedarf, Region und Budget passen.",
-        // Dashboard-Mockup
-        tabs: ["Kampagnen", "Anfragen", "Termine"],
-        kpiOpen: { label: "Ohne Termin", value: "7/10", ratio: 0.7 },
-        kpiDuration: { label: "Ø Reaktionszeit", value: "3 Tage" },
-        columns: { role: "Anfrage", filled: "Eingegangen", status: "Status" },
-        rows: [
-          { role: "Badsanierung", filled: "vor 3 Tagen", status: "Nicht erreicht", image: "/images/profil/18.jpg", highlight: true },
-          { role: "Nur Preisanfrage", filled: "vor 4 Tagen", status: "Kein Bedarf", image: "/images/profil/04.jpg", highlight: false },
-          { role: "PV-Anlage", filled: "vor 5 Tagen", status: "Abgesprungen", image: "/images/profil/02.jpg", highlight: false },
-        ],
-      },
-      cost: {
-        title: "Drei Agenturen, vier Tools, und trotzdem kein planbarer Auftrag.",
-        text: "Google-Agentur, Social-Media-Freelancer, ein Leadportal und ein Website-Baukasten. Jeder macht seinen Teil, niemand ist für das Ergebnis zuständig. Die Rechnungen kommen trotzdem pünktlich.",
-        // Handy-Mockup: Ausgaben-App
-        app: {
-          title: "Übersicht",
-          months: ["April", "Mai", "Juni", "Juli", "August"],
-          kpis: [
-            { value: "1.240", label: "Klicks", tone: "light" as const },
-            { value: "2", label: "Aufträge", tone: "accent" as const },
-          ],
-          rows: [
-            { name: "Google-Ads-Agentur", sub: "Service", amount: "-2.400 €" },
-            { name: "Social-Media-Freelancer", sub: "Service", amount: "-1.890 €" },
-            { name: "Leadportal", sub: "Service", amount: "-3.150 €" },
-            { name: "SEO-Paket", sub: "Service", amount: "-1.200 €" },
-            { name: "Website-Baukasten", sub: "Service", amount: "-590 €" },
-          ],
-          nav: ["Start", "Anfragen", "Ablage", "Einstellungen"],
-          totalLabel: "Gesamt",
-          total: "-9.230 €",
-        },
-      },
+    eyebrow: "01 · Der Engpass",
+    headlineBold: "Drei Gründe, warum",
+    headlineLight: "der Auftragseingang schwankt",
+    referrals: {
+      title: "Neue Kunden kommen nur über Empfehlungen",
+      text: "Im Tagesgeschäft bleibt keine Zeit für Akquise. Aufträge kommen, wenn jemand Sie weiterempfiehlt. Planen lässt sich damit nichts, weder Personal noch Material.",
+      // Säulen: Anfragen pro Monat (Grafik zur Veranschaulichung, keine Messwerte)
+      chartLabel: "Anfragen pro Monat",
+      months: ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun"],
+      values: [6, 3, 7, 1, 5, 2],
+      lowIndex: 3,
+      lowNote: "April: 1 Anfrage",
+    },
+    fit: {
+      title: "Die Anfragen, die kommen, passen nicht",
+      text: "Viele wollen nur einen Preis zum Vergleich, wohnen außerhalb Ihres Gebiets oder haben noch gar kein Budget. Jedes dieser Gespräche kostet Sie trotzdem eine halbe Stunde.",
+      messages: [
+        { text: "Was kostet das ungefähr? Nur zum Vergleichen.", tag: "Kein Bedarf", image: "/images/profil/07.jpg" },
+        { text: "Wir wohnen bei Hamburg, kommen Sie auch hierher?", tag: "Falsche Region", image: "/images/profil/26.jpg" },
+      ],
+    },
+    tools: {
+      title: "Viele Dienstleister, keiner zuständig",
+      text: "Google-Agentur, Leadportal, Webseiten-Baukasten, dazu ein Freelancer für Social Media. An jeder Übergabe geht etwas verloren, und für das Ergebnis fühlt sich niemand verantwortlich.",
+      // Kette aus Diensten; broken = Übergabe klappt nicht
+      links: [
+        { from: "Google-Agentur", to: "Webseite", broken: true },
+        { from: "Leadportal", to: "Ihr Postfach", broken: false },
+        { from: "Social Media", to: "Rückruf", broken: true },
+      ],
+      alert: "Anfrage seit 4 Tagen unbeantwortet",
+    },
+    banner: {
+      before: "Meist fehlt keine weitere Maßnahme. Es fehlt",
+      highlight: "ein Ablauf",
+      after: ", der aus Werbung, Webseite und Nachfassen verlässlich Termine macht.",
+      cta: "Engpass besprechen",
     },
   },
 
