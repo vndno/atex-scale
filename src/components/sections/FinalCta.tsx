@@ -1,69 +1,76 @@
 import { site } from "@/content/site";
-import { Button } from "@/components/ui";
 import { Icon } from "@/components/icons";
+import { ContactForm } from "@/components/ContactForm";
 
+/**
+ * Schluss (dunkel): links Überzeile, Versprechen, Text und drei Punkte,
+ * rechts das Kontaktformular (dieselbe Komponente wie im Modal) in einer weißen Karte
+ * mit Telefon, E-Mail und WhatsApp darunter.
+ */
 export function FinalCta() {
   const f = site.finalCta;
-  // Jede Hälfte deutlich breiter als der Bildschirm; Abstände als Margin am Element, damit -50 % exakt auf die Naht trifft
-  const tHalf = [...f.ticker, ...f.ticker, ...f.ticker];
-  const ticker = [...tHalf, ...tHalf];
-  const nHalf = [...f.notifications, ...f.notifications];
-  const notes = [...nHalf, ...nHalf];
+  const c = site.contact;
   return (
-    <section id="kontakt" className="section-y overflow-hidden bg-navy-2 text-white">
-      <div className="container-x flex flex-col items-center text-center">
-        <h2 className="max-w-[880px] text-[clamp(1.75rem,3vw,2.375rem)] font-semibold leading-tight">
-          {f.headlineBold} <span className="h-light">{f.headlineLight}</span>
-        </h2>
-        <p className="mt-5 max-w-[640px] text-[15px] text-on-navy-muted">{f.text}</p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Button href={site.contact.bookingHref} variant="light" arrow={false}>
-            {f.cta}
-          </Button>
-          <a
-            href={site.contact.whatsapp.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-sm border border-white/70 px-[26px] py-[14px] text-[15px] font-semibold text-white transition-all duration-200 hover:-translate-y-px hover:bg-white/10"
-          >
-            <Icon.whatsapp className="size-5" />
-            {site.contact.whatsapp.label}
-          </a>
-        </div>
-        <p className="mt-5 text-[13px] text-on-navy-muted">{f.note}</p>
+    <section id="kontakt" className="relative overflow-hidden bg-navy-2 py-16 text-white lg:py-24">
+      {/* Punktraster + orange getönter Schein oben links */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 opacity-[0.045]" style={{ backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1.2px)", backgroundSize: "28px 28px" }} />
+        <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(50% 60% at 15% 20%, rgba(242,106,74,0.16) 0%, rgba(242,106,74,0) 100%)" }} />
       </div>
 
-      {/* Ticker-Reihe 1: Angebote mit Anfragen pro Monat */}
-      <div className="edge-fade mt-12 overflow-hidden">
-        <div className="marquee-track flex w-max animate-marquee">
-          {ticker.map((t, i) => (
-            <div key={i} className="mr-3.5 rounded-md bg-navy-card px-5 py-3">
-              <p className="text-[14px] font-semibold">{t.role}</p>
-              <p className="text-[12px] text-on-navy-muted">{t.count} {f.tickerSuffix}</p>
-            </div>
-          ))}
+      <div className="container-x relative grid items-center gap-12 *:min-w-0 lg:grid-cols-[1fr_480px] lg:gap-16">
+        <div>
+          <p className="inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.08em] text-accent">
+            <span className="size-1.5 rounded-full bg-accent" aria-hidden />
+            {f.eyebrow}
+          </p>
+          <h2 className="mt-5 text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.08] tracking-[-0.01em]">
+            {f.headlineBold} <span className="h-light">{f.headlineLight}</span>
+          </h2>
+          <p className="mt-6 max-w-[620px] text-[16px] leading-[1.65] text-on-navy-muted">{f.text}</p>
+          <ul className="mt-8 flex flex-col gap-4">
+            {f.bullets.map((b) => {
+              const I = Icon[b.icon];
+              return (
+                <li key={b.title} className="flex items-start gap-3">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-navy-card text-accent">
+                    <I className="size-[18px]" />
+                  </span>
+                  <span>
+                    <span className="block text-[15px] font-semibold">{b.title}</span>
+                    <span className="block text-[13px] text-on-navy-muted">{b.text}</span>
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
         </div>
-      </div>
 
-      {/* Ticker-Reihe 2: Anfrage-Benachrichtigungen */}
-      <div className="edge-fade mt-3.5 overflow-hidden">
-        <div className="marquee-track flex w-max animate-marquee-reverse">
-          {notes.map((n, i) => (
-            <div key={i} className="mr-3.5 flex items-center gap-3 rounded-md bg-navy-card py-3 pl-4 pr-[18px]">
-              {/* zwei kleine Profilbilder, leicht überlappend */}
-              <span className="flex shrink-0 -space-x-2.5">
-                {n.images.map((src) => (
-                  <img key={src} src={src} alt="" className="size-8 rounded-sm border-2 border-navy-card object-cover" loading="lazy" />
-                ))}
-              </span>
-              <div className="whitespace-nowrap">
-                <p className="text-[13px] font-semibold">{n.text}</p>
-                <p className="text-[11px] text-on-navy-muted">
-                  {n.roles} · {n.time}
-                </p>
-              </div>
-            </div>
-          ))}
+        {/* Formular-Karte */}
+        <div className="rounded-2xl bg-white p-6 text-ink shadow-card sm:p-8">
+          <p className="text-[24px] leading-none tracking-[-0.01em]">
+            <span className="font-bold text-ink-soft">{site.brand.name}</span>
+            <span className="font-light text-accent">{site.brand.nameAccent}</span>
+          </p>
+          <h3 className="mt-5 text-[22px] font-semibold leading-tight">{f.formTitle}</h3>
+          <p className="mt-1.5 text-[14px] text-muted">{f.formText}</p>
+          <div className="mt-6">
+            <ContactForm />
+          </div>
+          <div className="mt-6 flex flex-col gap-2 border-t border-line-soft pt-5 text-[14px]">
+            <a href={c.phoneHref} className="flex items-center gap-2.5 text-muted-2 hover:text-ink">
+              <Icon.phone className="size-4 text-accent" />
+              {c.phone}
+            </a>
+            <a href={`mailto:${c.email}`} className="flex items-center gap-2.5 text-muted-2 hover:text-ink">
+              <Icon.message className="size-4 text-accent" />
+              {c.email}
+            </a>
+            <a href={c.whatsapp.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-muted-2 hover:text-ink">
+              <Icon.whatsapp className="size-4 text-success" />
+              {c.whatsapp.label}
+            </a>
+          </div>
         </div>
       </div>
     </section>

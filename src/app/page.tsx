@@ -1,4 +1,3 @@
-import { site } from "@/content/site";
 import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { LogoMarquee } from "@/components/sections/LogoMarquee";
@@ -12,28 +11,20 @@ import { CaseStudy } from "@/components/sections/CaseStudy";
 import { Showcase } from "@/components/sections/Showcase";
 import { Guarantee } from "@/components/sections/Guarantee";
 import { Stats } from "@/components/sections/Stats";
-import { Faq } from "@/components/sections/Accordions";
 import { References } from "@/components/sections/References";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Footer } from "@/components/sections/Footer";
 
 /**
- * Seitenaufbau (Argumentationskette):
- * Versprechen → Social Proof → Problem → Lösung → Modell (Kanäle → Eingang) → Mechanismus → Kosten des Wartens
- * → Beweis (laufende Projekte) → Risikoabnahme (BAFA, Zusage) → Zahlen → Kundenreise
- * → Landingpage → FAQ → Handlung → Footer
+ * Seitenaufbau (Reihenfolge und Argumentation nach dem Vorbild trimando.at, Inhalte eigen):
+ * Versprechen mit Netzwerk-Grafik → Logo-Band → 01 Engpass (drei Probleme) → 02 System (Schritte + Dashboard)
+ * → 03 Ablauf (vier Schritte als Reiter) → 04 Warum es funktioniert → 05 Methode (Kurve, drei Phasen)
+ * → 06 Privat- und Geschäftskunden → 07 Case Study H24 → 08 Kampagnen-Beispiele (Handys)
+ * → 09 Schriftliche Zusage (Markt-Check) → Zahlenband → 10 Referenzen → Schluss mit Formular → Footer
  */
-/* FAQ-Sektion als strukturierte Daten (kann in Suchergebnissen ausgeklappt erscheinen) */
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: site.faq.items.map((it) => ({ "@type": "Question", name: it.q, acceptedAnswer: { "@type": "Answer", text: it.a } })),
-};
-
 export default function Home() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <Navbar />
       <main>
         <Hero />
@@ -49,7 +40,6 @@ export default function Home() {
         <Guarantee />
         <Stats />
         <References />
-        <Faq />
         <FinalCta />
       </main>
       <Footer />

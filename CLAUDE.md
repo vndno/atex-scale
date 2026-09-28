@@ -30,9 +30,15 @@ Repo `vndno/atexjobs`, live www.atex-jobs.de) – gleiche Komponenten, gleiche O
   `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`.
 - API-Schlüssel werden nie im Chat verwendet; nur der Auftraggeber trägt sie in Vercel ein.
 
-## Technik & Prüfen (auf dem Mac gibt es kein Node/npm)
-- Kein lokaler Build. Nach dem Push: `curl` gegen https://atex-scale.vercel.app pollen (Deploy ~40–60 s), DOM mit dem
-  Browser-Pane (`javascript_tool`) messen. Screenshots dieser Origin schlagen oft fehl → Text/DOM prüfen.
+## Technik & Prüfen
+- Node 24 liegt unter /usr/local/bin. Projektordner in ~/Documents nicht mit node_modules füllen: für Tests eine Kopie im
+  Scratchpad anlegen (`rsync` ohne .git/node_modules/.next, dort `npm ci`, dann `npx next build`). ESLint meldet 3 Altfehler in
+  ConsentBanner/ContactModal/BookingWidget (set-state-in-effect) – bewusst unverändert, der Build prüft ESLint nicht.
+- Vorschau: `next start` des Produktions-Builds (der Dev-Server lieferte einmal veraltetes Tailwind-CSS). Screenshots per
+  Headless-Chrome (`--headless=new --screenshot --window-size=1440,12500`); unter ~500 px Breite schneidet Headless-Chrome ab →
+  Handy nur per Browser-Pane-Emulation (375 px) und DOM-Messung prüfen.
+- Nach dem Push: `curl` gegen https://atex-scale.vercel.app pollen (Deploy ~30–40 s), DOM mit dem Browser-Pane
+  (`javascript_tool`) messen. Screenshots dieser Origin schlagen oft fehl → Text/DOM prüfen.
 - Build-Fehler: Vercel-Dashboard im Chrome des Nutzers (claude-in-chrome) öffnen → Projekt atex-scale → Deployments →
   Eintrag anklicken → Build Logs lesen. Tabs danach schließen. Erster Fehler war eine leere NEXT_PUBLIC_SITE_URL (behoben).
 - TypeScript: `site.ts` ist `as const`; Sektionen greifen fest auf Schlüssel zu → beim Umbauen von site.ts Komponenten
@@ -42,7 +48,13 @@ Repo `vndno/atexjobs`, live www.atex-jobs.de) – gleiche Komponenten, gleiche O
 - Kontaktformular → `src/app/api/anfrage/route.ts`: Close-Lead mit Lead-Quelle „Inbound: Webseite - AtexScale“,
   Lead-Kanal „Website“; Mail über Resend (Absender anfrage@versand.atex-jobs.de, Domain ist verifiziert).
 
+## Aufbau der Startseite (seit 28.09.2026 nach trimando.at)
+Hero mit Netzwerk-Grafik → Logo-Band (dunkel) → `#engpass` 01 → `#leistungen` 02 System → `#ablauf` 03 → `#warum` 04 →
+`#methode` 05 → `#branchen` 06 → `#referenzen` 07 Case Study H24 → `#kampagnen` 08 Handy-Mockups → `#zusage` 09 →
+`#zahlen` → `#projekte` 10 Referenzen → `#kontakt` Schluss mit eingebettetem ContactForm. Keine FAQ, kein Rechner mehr.
+
 ## Bekannte offene Punkte
-- Bilder: `journey/landingpage.jpg`, `referenzen/h24.jpg`, echtes `og-image.jpg` (aktuell Bürofoto als Übergang).
-- Zahlen mit `TODO prüfen` bestätigen (280+ Betriebe, 24 h, 14 Tage, Anfragen/Monat, H24-Startjahr).
-- Sektions-IDs stammen noch aus AtexJobs (`#karriere` = Kundenreise, `#karriereseite` = Landingpage-Sektion).
+- Bilder: `referenzen/h24.jpg` (16:10), echtes `og-image.jpg`, Wistia-ID für das Erklärvideo (`site.platform.video.id`).
+- Zahlen mit `TODO prüfen` bestätigen (280+ Betriebe, 24 h, 10 im Team, Dashboard- und Markt-Check-Beispielwerte,
+  Phasen-Zeiträume der Methode, H24-Startjahr).
+- Kundenzitate fehlen: Referenzkarten zeigen Projektbeschreibungen; freigegebene Zitate in `site.references.items[].quote`.

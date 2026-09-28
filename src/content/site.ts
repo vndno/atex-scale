@@ -708,62 +708,19 @@ export const site = {
     footerLink: "Cookies bearbeiten",
   },
 
-  faq: {
-    headline: "Häufige Fragen",
-    items: [
-      {
-        q: "Wie funktioniert die schriftliche Zusage?",
-        a: "Besteht Ihr Angebot unseren Markt-Check, sagen wir Ihnen eine Anzahl qualifizierter Anfragen oder Termine schriftlich zu. Wird sie innerhalb der vereinbarten Laufzeit nicht erreicht, verlängern wir die Zusammenarbeit kostenlos oder erstatten Ihr Honorar, je nach Vereinbarung im Angebot. Die Details regeln unsere AGB und Ihr Angebot.",
-      },
-      {
-        q: "Für welche Branchen arbeitet ihr?",
-        a: "Vor allem Handwerk, Bau und Gebäudetechnik, Praxen, Steuer- und Anwaltskanzleien, Ingenieurbüros und B2B-Dienstleister. Gemeinsam ist allen: erklärungsbedürftige Angebote mit einem Auftragswert, bei dem sich eine geprüfte Anfrage lohnt.", // TODO prüfen
-      },
-      {
-        q: "Was macht ihr anders als eine klassische Werbeagentur?",
-        a: "Wir schalten nicht nur Anzeigen. Wir bauen die Landingpage, prüfen jede Anfrage innerhalb von 24 Stunden und buchen Termine direkt in Ihren Kalender. Bei Ihnen kommen nur Menschen an, die Bedarf haben und in Ihrer Region sind.",
-      },
-      {
-        q: "Wie lange dauert es bis zur ersten Anfrage?",
-        a: "Die Kampagne läuft in der Regel zwei bis drei Wochen nach dem Start, die ersten qualifizierten Anfragen kommen meist in der ersten Woche danach. Den ersten gebuchten Termin gibt es im Schnitt nach 14 Tagen.", // TODO prüfen
-      },
-      {
-        q: "Wer bezahlt das Werbebudget?",
-        a: "Das Werbebudget für Meta, Google und die anderen Plattformen ist nicht Teil unseres Honorars und wird im Angebot gesondert ausgewiesen. Wie hoch es sein sollte, hängt von Region, Angebot und Ziel ab. Das rechnen wir im Markt-Check durch.",
-      },
-      {
-        q: "Muss ich mich langfristig binden?",
-        a: "Nein. Sie wählen zwischen verschiedenen Laufzeiten, passend zu Ihrem Angebot und Ihrem Bedarf.",
-      },
-    ],
-  },
-
+  // Schluss (dunkel): links Versprechen und drei Punkte, rechts das Kontaktformular in einer weißen Karte
   finalCta: {
-    // Überschrift zweiteilig: erster Teil fett, zweiter dünn (Highlight wie in den übrigen Sektionen)
-    headlineBold: "Wählen Sie einen Partner,",
-    headlineLight: "der Ihre Branche bereits kennt",
-    text: "Kostenfreier Markt-Check. Ab Schwellwert: schriftliche Zusage.",
-    cta: "Gespräch vereinbaren",
-    note: "In 2 Minuten unverbindlich anfragen",
-    tickerSuffix: "Anfragen / Monat",
-    ticker: [
-      { role: "Badsanierung", count: 27 },
-      { role: "PV-Anlage", count: 34 },
-      { role: "Steuerberatung", count: 11 },
-      { role: "Wärmepumpe", count: 31 },
-      { role: "Dachsanierung", count: 19 },
-      { role: "Implantologie", count: 16 },
-      { role: "Einbauküchen", count: 21 },
-    ], // TODO prüfen
-    // Anfrage-Meldungen: kleine Profilbilder; roles = für welches Angebot
-    notifications: [
-      { text: "4 neue Anfragen", roles: "Badsanierung", time: "vor 6 Stunden", images: ["/images/profil/07.jpg", "/images/profil/04.jpg"] },
-      { text: "6 neue Anfragen", roles: "PV-Anlage & Speicher", time: "vor 4 Stunden", images: ["/images/profil/13.jpg", "/images/profil/14.jpg"] },
-      { text: "2 Termine gebucht", roles: "Steuerberatung", time: "vor 3 Stunden", images: ["/images/profil/15.jpg", "/images/profil/09.jpg"] },
-      { text: "2 neue Anfragen", roles: "Implantologie", time: "vor 15 Stunden", images: ["/images/profil/41.jpg", "/images/profil/23.jpg"] },
-      { text: "3 Termine gebucht", roles: "Wärmepumpe", time: "vor 2 Stunden", images: ["/images/profil/08.jpg", "/images/profil/21.jpg"] },
-      { text: "5 neue Anfragen", roles: "Dachsanierung & Fenster", time: "vor 8 Stunden", images: ["/images/profil/26.jpg", "/images/profil/38.jpg"] },
+    eyebrow: "Kostenloser Markt-Check · unverbindlich",
+    headlineBold: "Wie viele neue Kunden",
+    headlineLight: "stecken in Ihrer Region?",
+    text: "Im Erstgespräch sehen wir uns Ihr Angebot und Ihre Region an. Sie erfahren, wie oft gesucht wird, was eine Anfrage kosten wird und ob wir Ihnen eine Zusage geben können. Die Einschätzung bekommen Sie schriftlich, innerhalb eines Werktags.",
+    bullets: [
+      { icon: "search" as const, title: "Ihr Markt in Zahlen", text: "Suchvolumen und Wettbewerb in Ihrem Gebiet" },
+      { icon: "chartLine" as const, title: "Ehrliche Einschätzung", text: "Lohnt sich Werbung für Ihr Angebot, und mit welchem Budget?" },
+      { icon: "calendar" as const, title: "Konkreter Plan", text: "Was in den ersten 90 Tagen am meisten bringt" },
     ],
+    formTitle: "Markt-Check anfragen",
+    formText: "Kostenlos, unverbindlich, Antwort innerhalb eines Werktags.",
   },
 
   footer: {
