@@ -102,7 +102,7 @@ export function GuaranteeCta() {
         <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-surface-3 shadow-card">
           {hasFile(g.image) ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={g.image} alt="Schweißerin aus dem Talentpool, Stelle als garantiefähig geprüft" className="absolute inset-0 h-full w-full object-cover" />
+            <img src={g.image} alt="Metallbaubetrieb aus dem Hero, Angebot für die Zusage geprüft" className="absolute inset-0 h-full w-full object-cover" />
           ) : (
             <Photo src={g.image} alt="Betrieb aus dem Hero" className="absolute inset-0 h-full w-full" tone="dark" label="Foto / Video" />
           )}
