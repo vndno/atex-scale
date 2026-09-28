@@ -104,7 +104,7 @@ export const site = {
 
   nav: {
     links: [
-      { label: "Leistungen", href: "/#system" },
+      { label: "Leistungen", href: "/#leistungen" },
       { label: "Über uns", href: "/ueber-uns" },
       { label: "Referenzen", href: "/#referenzen" },
       { label: "Karriere", href: "https://www.atex-media.de/karriere" }, // Stellen bei Atex Media (öffnet in neuem Tab)
@@ -279,58 +279,64 @@ export const site = {
     },
   },
 
-  system: {
-    eyebrow: "Unsere Arbeitsweise",
-    headlineBold: "So werden aus Klicks",
-    headlineLight: "Termine im Kalender",
-    cards: {
-      prequal: {
-        title: "Qualifizierung jeder Anfrage",
-        text: "Innerhalb von 24 Stunden prüfen wir jede Anfrage: Was wird gebraucht, wo, wann und mit welchem Budget? Was nicht passt, sehen Sie gar nicht.",
-        listTitle: "Anfragen für Ihr Angebot:",
-        candidates: [
-          { role: "Nur Preisvergleich", ok: false, image: "/images/profil/15.jpg" },
-          { role: "Badsanierung, ab Oktober", ok: true, image: "/images/profil/13.jpg" },
-          { role: "Außerhalb Ihrer Region", ok: false, image: "/images/profil/19.jpg" },
-          { role: "Kein Budget genannt", ok: false, image: "/images/profil/44.jpg" },
-        ],
-        badge: "Qualifiziert",
-      },
-      agent: {
-        title: "KI-Assistent für den Nachfass",
-        text: "Der Assistent antwortet innerhalb von Minuten, stellt die richtigen Fragen und bucht den Termin direkt in Ihren Kalender. Auch abends und am Wochenende, wenn niemand im Büro ist.",
-        // Ebenen: Hintergrundfoto → blauer Rahmen (wächst bei Hover) → freigestellte Person → Schild
-        background: "/images/system-agent/bg.jpg",
-        person: "/images/system-agent/person.png", // gleiche Bildausschnitt wie bg, transparenter Hintergrund
-        // Lage des Rahmens in Prozent der Bildfläche (um die Person herum)
-        frame: { left: 51, top: 13, width: 37, height: 74 },
-        overlayTitle: "Termin gebucht ✓",
-        overlaySub: "Dienstag, 14:00 Uhr",
-      },
-      channels: {
-        title: "Sichtbar, wo Ihre Kunden suchen",
-        text: "Für jedes Angebot schalten wir eine eigene Kampagne auf den Kanälen, auf denen Ihre Kunden suchen und scrollen, und sorgen dafür, dass Sie dort oben stehen.",
-        // Grafik: Ihr Angebot in der Mitte sendet Wellen aus; drumherum die Netzwerke, jedes mit "#1"-Badge (Top-Platzierung)
-        center: { label: "Ihr Angebot", role: "Badsanierung" },
-        rank: "#1",
-        chip: "Auf 8 Kanälen live",
-        rankNote: "Oben, wo gesucht wird",
-        // Logos: /public/images/networks (Simple Icons, Markenfarben). Ohne freies Logo → Wortmarke als Text
-        networks: [
-          { name: "Facebook", logo: "/images/networks/facebook.svg" },
-          { name: "Instagram", logo: "/images/networks/instagram.svg" },
-          { name: "TikTok", logo: "/images/networks/tiktok.svg" },
-          { name: "LinkedIn", logo: "", text: "in", bg: "#0a66c2" },
-          { name: "Google", logo: "/images/networks/google.svg" },
-          { name: "YouTube", logo: "/images/networks/youtube.svg" },
-          { name: "Bing", logo: "", text: "b", bg: "#008373" },
-          { name: "Xing", logo: "/images/networks/xing.svg" },
+  // 03 · Der Ablauf: vier Reiter links, Detail rechts (Text + vier Kärtchen), darunter der Kreislauf als Leiste
+  process: {
+    eyebrow: "03 · Der Ablauf",
+    headlineBold: "Von der ersten Anzeige",
+    headlineLight: "bis zum Termin in Ihrem Kalender",
+    text: "Vier Schritte greifen ineinander und laufen dauerhaft weiter, solange Ihre Kampagne läuft. Bei Ihnen kommt am Ende an, was zählt: Termine mit Menschen, die kaufen wollen.",
+    stepLabel: "Schritt",
+    loopTitle: "Der ganze Kreislauf",
+    autoMs: 7000, // Reiter wechseln automatisch, bis jemand selbst klickt
+    phases: [
+      {
+        icon: "megaphone" as const,
+        title: "Sichtbar werden",
+        sub: "Dort, wo Ihre Kunden suchen",
+        text: "Für jedes Angebot entsteht eine eigene Kampagne mit eigenen Anzeigen. Wir schalten sie auf den Kanälen, die Ihre Kunden wirklich nutzen, und steuern sie genau auf Ihre Region aus.",
+        items: [
+          { title: "Meta", text: "Facebook und Instagram, auf Ihre Region zugeschnitten" },
+          { title: "Google", text: "Suche und Maps, wenn jemand konkret sucht" },
+          { title: "LinkedIn", text: "Entscheider in Unternehmen, für B2B-Angebote" },
+          { title: "YouTube und TikTok", text: "Kurze Videos aus Ihrem Betrieb" },
         ],
       },
-    },
-    wide: [
-      { title: "Kaufsignale erkennen", text: "Wer gerade eine Sanierung plant, sucht anders als jemand, der nur vergleicht. Anzeigen, Landingpage und Rückfragen sortieren das, bevor ein Termin entsteht." },
-      { title: "Mehrere Berührungspunkte", text: "Ihre Kunden begegnen Ihrem Angebot mehrfach: im Feed, in der Suche, auf der Landingpage. Wer dann anfragt, meint es ernst." },
+      {
+        icon: "database" as const,
+        title: "Anfragen sammeln",
+        sub: "Alles an einer Stelle",
+        text: "Anfragen aus Anzeigen, Landingpage, WhatsApp und Telefon landen in einem gemeinsamen Eingang. Nichts versandet mehr im Postfach oder auf einem Notizzettel.",
+        items: [
+          { title: "Landingpage", text: "Eine Seite pro Angebot, Anfrage in zwei Minuten" },
+          { title: "WhatsApp", text: "Aus der Anzeige direkt in den Chat" },
+          { title: "Formular in der Anzeige", text: "Anfrage ohne Umweg über die Webseite" },
+          { title: "Telefon", text: "Anrufe aus der Kampagne werden mit erfasst" },
+        ],
+      },
+      {
+        icon: "filter" as const,
+        title: "Prüfen und nachfassen",
+        sub: "Nur Passendes geht weiter",
+        text: "Binnen 24 Stunden sehen wir uns jede Anfrage an. Wer nicht gleich erreichbar ist, bekommt freundliche Erinnerungen per Nachricht, E-Mail oder Anruf.", // TODO prüfen (24 h)
+        items: [
+          { title: "Bedarf", text: "Was genau wird gebraucht?" },
+          { title: "Region", text: "Liegt der Ort in Ihrem Gebiet?" },
+          { title: "Zeitpunkt", text: "Wann soll es losgehen?" },
+          { title: "Budget", text: "Passt die Größenordnung zu Ihrem Angebot?" },
+        ],
+      },
+      {
+        icon: "calendar" as const,
+        title: "Termin und Auswertung",
+        sub: "Direkt in Ihrem Kalender",
+        text: "Passt alles, bucht der KI-Assistent den Termin in Ihren Kalender, auch abends und am Wochenende. Jeden Monat sehen Sie, welcher Kanal wie viele Termine gebracht hat.",
+        items: [
+          { title: "Terminbuchung", text: "Mit allen Angaben aus der Anfrage" },
+          { title: "Erinnerung", text: "Kurz vorher per Nachricht, damit keiner vergisst" },
+          { title: "Wiederansprache", text: "Wer noch nicht so weit ist, sieht Ihr Angebot erneut" },
+          { title: "Auswertung", text: "Termine und Kosten je Kanal, jeden Monat" },
+        ],
+      },
     ],
   },
 
@@ -640,7 +646,7 @@ export const site = {
       title: "Quicklinks",
       items: [
         { label: "Startseite", href: "/" },
-        { label: "Leistungen", href: "/#system" },
+        { label: "Leistungen", href: "/#leistungen" },
         { label: "Referenzen", href: "/#referenzen" },
         { label: "Kundenreise", href: "/#karriere" },
         { label: "Über uns", href: "/ueber-uns" },
