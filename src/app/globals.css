@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Atex Scale Design-Tokens (wie AtexJobs, Akzent Orange)
+   Quelle: Figma "Atex-Media-Webseite umbau" → Frame "AtexJob"
+   Alle Farben/Radien/Abstände hier zentral pflegen.
+------------------------------------------------------------------- */
+@theme {
+  /* Farben */
+  --color-ink: #121c29;          /* Headline / Fließtext dunkel */
+  --color-ink-soft: #393939;     /* Logo "Atex" */
+  --color-muted: #737880;        /* Sekundärtext */
+  --color-muted-2: #6b7280;      /* Sekundärtext (Bento) */
+  --color-muted-3: #9ca3af;      /* Tertiärtext / Labels */
+  --color-line: #e0ded9;         /* Rahmen, Trennlinien */
+  --color-line-soft: #e5e7eb;
+
+  --color-accent: #f26a4a;       /* Atex-Scale-Orange (aus dem Logo) */
+  --color-accent-strong: #dd4f2d;
+  --color-accent-soft: #fbd3c8;
+
+  --color-navy: #0e1721;         /* Dunkle Sektionen (Rechner, Buttons) */
+  --color-navy-2: #142232;       /* Schluss-CTA */
+  --color-navy-card: #1a2633;    /* Karten auf Navy */
+  --color-on-navy-muted: #b8c2cc;
+
+  --color-creme: #f6f4f0;        /* Footer */
+  --color-surface: #f7f8f9;      /* Helle Sektionen */
+  --color-surface-2: #f9fafb;
+  --color-surface-3: #eff0f1;    /* Panel-Hintergrund */
+  --color-chip: #f3f4f6;
+
+  --color-success: #66a182;
+  --color-success-bg: #d1fae5;
+  --color-success-ink: #065f46;
+  --color-warn-bg: #fef3c7;
+  --color-warn-ink: #786621;
+  --color-danger-bg: #fee2e2;
+  --color-danger-ink: #991b1b;
+
+  /* Typo */
+  --font-sans: "myriad-pro", "Source Sans 3 Variable", ui-sans-serif, system-ui, sans-serif;
+
+  /* Radien */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+
+  /* Schatten */
+  --shadow-card: 0 12px 24px 0 rgba(0, 0, 0, 0.13);
+  --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.06);
+
+  /* Animation */
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-ring: ring 3.3s ease-out infinite;
+  --animate-row-in: row-in 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-marquee-reverse: marquee-reverse 46s linear infinite;
+  --animate-hero-frame: hero-frame 600ms cubic-bezier(0.2, 0.8, 0.2, 1) 350ms both;
+  --animate-hero-pill: hero-pill 600ms ease-out 550ms both;
+  --animate-hero-pill-late: hero-pill 600ms ease-out 700ms both;
+  --animate-pop: hero-pill 350ms ease-out both; /* Modal, Widget */
+  --animate-avatar-in: avatar-in 600ms cubic-bezier(0.2, 0.8, 0.2, 1) both; /* Pool-Porträt wechselt */
+  --animate-hero-tile: hero-tile 800ms cubic-bezier(0.2, 0.8, 0.2, 1) both; /* neues Foto in Kachel */
+
+  @keyframes row-in {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes ring {
+    0% { transform: translate(-50%, -50%) scale(0.35); opacity: 0.7; }
+    100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0; }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes marquee-reverse {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+  /* Hero: Rahmen zoomt ein, Score und Pill blenden bei jedem Motiv neu ein */
+  @keyframes hero-frame {
+    from { opacity: 0; transform: scale(1.08); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes avatar-in {
+    from { opacity: 0; transform: scale(0.6); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes hero-tile {
+    from { opacity: 0; transform: scale(1.06); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes hero-pill {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Wiederkehrende Bausteine ------------------------------------------ */
+@utility container-x {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) { padding-inline: 2.5rem; }
+  @media (min-width: 1024px) { padding-inline: 4rem; }
+}
+
+@utility section-y {
+  padding-block: 4rem;
+  @media (min-width: 1024px) { padding-block: 5.5rem; }
+}
+
+@utility eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+@utility h-display {
+  font-size: clamp(2rem, 4.2vw, 3.25rem);
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+@utility h-section {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+@utility h-light {
+  font-weight: 300;
+}
+
+/* Marquee-Pause bei Hover */
+/* Kein horizontales Scrollen: Laufbänder und gedrehte Mockups dürfen nie die Seite verbreitern */
+html, body { overflow-x: clip; }
+
+.marquee-track:hover { animation-play-state: paused; }
+
+/* Weicher Rand für Laufbänder über die volle Breite: links und rechts laufen die Inhalte in den Hintergrund aus
+  . Ein Fünftel der Breite je Seite, auf großen Bildschirmen etwas mehr. */
+.edge-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%);
+}
+@media (min-width: 1536px) {
+  .edge-fade {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 24%, black 76%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 24%, black 76%, transparent 100%);
+  }
+}
+
+/* Range-Slider im Rechner */
+input[type="range"].slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--color-accent) 0%,
+    var(--color-accent) var(--pct, 50%),
+    rgba(255, 255, 255, 0.18) var(--pct, 50%),
+    rgba(255, 255, 255, 0.18) 100%
+  );
+  outline: none;
+}
+input[type="range"].slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--color-accent);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+input[type="range"].slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--color-accent);
+  cursor: pointer;
+}
