@@ -233,77 +233,49 @@ export const site = {
     },
   },
 
-  solution: {
-    eyebrow: "Passend zu Ihrem Angebot",
-    headlineBold: "Kein Paket von der Stange.",
-    headlineLight: "Sondern das, was Ihr Markt braucht.",
-    text: "Eine Badsanierung in Regensburg wird anders gesucht als eine Steuerberatung in München. Deshalb kombinieren wir erprobte Bausteine je nach Angebot, Region und Zielkunde, statt jedem Betrieb dasselbe zu verkaufen.",
-    bullets: [
-      "Am Anfang steht eine Analyse Ihres Angebots und Ihrer Region",
-      "Jeder Baustein hat ein Ziel: Anfragen, aus denen Aufträge werden",
-      "Mehr als 280 Betriebe und Kanzleien haben wir so begleitet", // TODO prüfen
+  // 02 · Das System: links fünf Schritte, rechts Live-Dashboard (Eingaben → Anfragen-Eingang → Stufen → Kennzahlen)
+  platform: {
+    eyebrow: "02 · Das System",
+    headlineBold: "Ein Ablauf,",
+    headlineLight: "der neue Kunden planbar macht",
+    text: "Wir übernehmen den ganzen Weg von der ersten Anzeige bis zum gebuchten Termin. Sie sprechen nur noch mit Menschen, die Ihr Angebot brauchen, in Ihrer Region sind und ein Budget eingeplant haben.",
+    stepsTitle: "Wie wir vorgehen",
+    steps: [
+      { title: "Markt-Check", text: "Wie oft wird Ihr Angebot in Ihrer Region gesucht? Das klären wir, bevor Sie etwas investieren." },
+      { title: "Angebot zuspitzen", text: "Wir bringen Ihr Angebot so auf den Punkt, dass Ihr Wunschkunde es in Sekunden versteht." },
+      { title: "Kampagnen auf acht Kanälen", text: "Meta, Google, LinkedIn, YouTube und weitere. Aufgesetzt und betreut von uns." },
+      { title: "Prüfung jeder Anfrage", text: "Binnen 24 Stunden klären wir Bedarf, Ort, Zeitpunkt und Budget." }, // TODO prüfen (24 h)
+      { title: "Termin in Ihrem Kalender", text: "Nur wer passt, bekommt einen Termin bei Ihnen. Darum geht es am Ende." },
     ],
-    modules: [
-      { title: "Marktanalyse", sub: "Nachfrage und Wettbewerb vorab", tone: "light" as const, icon: "search" as const },
-      { title: "Kampagnen", sub: "Meta, Google, LinkedIn", tone: "light" as const, icon: "arrows" as const },
-      { title: "Foto und Video", sub: "Echte Einblicke in den Betrieb", tone: "dark" as const, icon: "camera" as const },
-      { title: "Qualifizierung", sub: "Jede Anfrage binnen 24 h geprüft", tone: "accent" as const, icon: "database" as const },
-      { title: "Landingpage", sub: "Gebaut für Anfragen", tone: "light" as const, icon: "award" as const },
-      { title: "Terminbuchung", sub: "Direkt in Ihren Kalender", tone: "light" as const, icon: "chart" as const },
-    ],
-  },
-
-  model: {
-    eyebrow: "So kommen die Anfragen",
-    headlineBold: "Acht Kanäle.",
-    headlineLight: "Ein geprüfter Kalender.",
-    text: "Wer nur auf Empfehlungen wartet, wartet heute lange. Wir gehen den umgekehrten Weg: Landingpage, KI-Assistent und Kampagnen auf Meta, Google, LinkedIn und den regionalen Plattformen liefern laufend Anfragen in einen gemeinsamen Eingang. Dort prüfen wir jede Anfrage. Bei Ihnen kommen nur die an, die Bedarf haben und wirklich kaufen wollen.",
-    // Quellen in drei Gruppen (oben → unten). own = eigener Baustein (blau hervorgehoben)
-    groups: [
-      {
-        label: "Eigene Bausteine",
-        own: true,
-        channels: [
-          { name: "Landingpage", sub: "Gebaut für Anfragen" },
-          { name: "KI-Assistent", sub: "Fragt nach, bucht Termine" },
-        ],
-      },
-      {
-        label: "Social Media",
-        own: false,
-        channels: [
-          { name: "Meta", sub: "Facebook & Instagram" },
-          { name: "TikTok", sub: "Kurzvideo-Anzeigen" },
-          { name: "LinkedIn", sub: "Entscheider im B2B" },
-        ],
-      },
-      {
-        label: "Suche & Plattformen",
-        own: false,
-        channels: [
-          { name: "Google", sub: "Suche & Maps" },
-          { name: "YouTube", sub: "Video-Anzeigen" },
-          { name: "Bing", sub: "Microsoft-Suche" },
-          { name: "Kleinanzeigen", sub: "Regionale Nachfrage" },
-        ],
-      },
-    ],
-    // Die Porträts im Eingang stammen aus /images/profil und wechseln laufend (PoolAvatars)
-    pool: {
-      eyebrow: "Anfragen-Eingang",
-      value: "24 h", // TODO prüfen
-      label: "bis jede Anfrage qualifiziert ist",
-      footer: "Kein Bedarf, falsche Region, kein Budget: fällt vorher raus",
-      avatarCount: 4,
-      swapIntervalMs: 2400,
-    },
-    result: {
-      eyebrow: "Bei Ihnen",
-      title: "Nur Termine mit echtem Bedarf",
-      bullets: [
-        "Bedarf, Region und Budget geprüft, bevor Sie ein Gespräch führen",
-        "Erster gebuchter Termin im Schnitt nach 14 Tagen", // TODO prüfen
+    dashboard: {
+      title: "Atex Scale · Live",
+      inputs: [
+        { label: "Ihr Angebot", icon: "target" as const, tone: "accent" as const },
+        { label: "Ihre Region", icon: "pin" as const, tone: "success" as const },
+        { label: "Ihr Wunschkunde", icon: "users" as const, tone: "creme" as const },
+        { label: "Auftragswert", icon: "chartLine" as const, tone: "chip" as const },
       ],
+      engine: { title: "Anfragen-Eingang", sub: "Kampagnen und Prüfung laufen", status: "Live" },
+      stages: [
+        { label: "Angefragt", icon: "message" as const, tone: "accent" as const },
+        { label: "Geprüft", icon: "check" as const, tone: "success" as const },
+        { label: "Termin", icon: "calendar" as const, tone: "creme" as const },
+      ],
+      // Beispielwerte zur Veranschaulichung – durch echte Werte aus einem Projekt ersetzen
+      kpis: [
+        { value: "+22", label: "Anfragen im Monat" }, // TODO prüfen
+        { value: "64 %", label: "passen zum Angebot" }, // TODO prüfen
+        { value: "38 €", label: "je geprüfte Anfrage" }, // TODO prüfen
+      ],
+      note: "Beispielwerte zur Veranschaulichung",
+    },
+    // Video unter der Sektion (Wistia). Ohne ID wird der Block nicht angezeigt.
+    video: {
+      id: "", // TODO Video-ID eintragen (Erklärvideo „So arbeitet Atex Scale“)
+      heading: "So arbeitet Atex Scale",
+      title: "So arbeitet Atex Scale",
+      label: "Erklärvideo",
+      poster: "/images/ueber-uns/beratung.jpg",
     },
   },
 
@@ -573,16 +545,6 @@ export const site = {
       },
     ],
     cta: "Landingpage besprechen",
-    // Bausteine zum Zusammenstellen: Hover zeigt "Zum Warenkorb hinzufügen", der Korb oben rechts zählt mit
-    cart: {
-      title: "Ihre Lösung zusammenstellen",
-      hint: "Bausteine per Klick in den Warenkorb legen",
-      add: "Zum Warenkorb hinzufügen",
-      remove: "Aus dem Warenkorb entfernen",
-      cartLabel: "Warenkorb",
-      request: "Auswahl anfragen",
-      empty: "Noch nichts ausgewählt",
-    },
     // Referenz, Inhalte von atex-media.de/referenzen/h24
     caseStudy: {
       eyebrow: "Aus der Praxis · B2B-Software",

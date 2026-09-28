@@ -5,8 +5,7 @@ import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { LogoMarquee } from "@/components/sections/LogoMarquee";
 import { Problem } from "@/components/sections/Problem";
-import { Solution } from "@/components/sections/Solution";
-import { Model } from "@/components/sections/Model";
+import { Platform } from "@/components/sections/Platform";
 import { System } from "@/components/sections/System";
 import { Calculator } from "@/components/sections/Calculator";
 import { Placements } from "@/components/sections/Placements";
@@ -41,8 +40,7 @@ export default function Home() {
         <Hero />
         <LogoMarquee />
         <Problem />
-        <Solution />
-        <Model />
+        <Platform />
         <System />
         <Calculator />
         <Placements />
