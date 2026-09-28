@@ -11,7 +11,8 @@ import { WhyUs } from "@/components/sections/WhyUs";
 import { Method } from "@/components/sections/Method";
 import { Audiences } from "@/components/sections/Audiences";
 import { CaseStudy } from "@/components/sections/CaseStudy";
-import { BafaCta, GuaranteeCta } from "@/components/sections/SplitCta";
+import { Showcase } from "@/components/sections/Showcase";
+import { Guarantee } from "@/components/sections/Guarantee";
 import { Stats } from "@/components/sections/Stats";
 import { Journey, Faq } from "@/components/sections/Accordions";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -47,9 +48,9 @@ export default function Home() {
         <Method />
         <Audiences />
         <CaseStudy />
-        <BafaCta />
+        <Showcase />
+        <Guarantee />
         <Stats />
-        <GuaranteeCta />
         <Journey available={journeyImages} />
         <Faq />
         <FinalCta />

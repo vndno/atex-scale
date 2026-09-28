@@ -147,33 +147,6 @@ export const site = {
       { icon: "calendar" as const, title: "Termine im Kalender.", text: "Wer passt, bekommt direkt einen Termin bei Ihnen. Kein Hinterhertelefonieren." },
       { icon: "shield" as const, title: "Zusage auf Papier.", text: "Vor dem Start sagen wir Ihnen eine Anzahl Anfragen schriftlich zu." },
     ],
-    overlayScoreLabel: "Markt-Score",
-    // Zwei Zustände je Betrieb: oranger Rahmen + "Zusage möglich" oder grüner Rahmen + "Kampagne läuft"
-    status: {
-      garantie: { label: "Zusage möglich", color: "#f26a4a" },
-      pool: { label: "Kampagne läuft", color: "#66a182" },
-    },
-    // Collage aus 4 Kacheln: Kacheln wechseln nacheinander ihr Motiv, der Rahmen mit Markt-Score "landet" um den Betrieb.
-    slideIntervalMs: 3400,
-    // frame/person/personClip wie bei AtexJobs (Figma "Hero-Kachel"). Motive = Betriebe, die mit uns Kunden gewinnen.
-    slides: [
-      { image: "/images/hero/23-elektriker.jpg", person: "/images/hero/23-elektriker-person.png", status: "garantie" as const, alt: "Elektromeister vor dem Schaltschrank", role: "Elektrobetrieb", score: "8.4", frame: { left: 25.6, top: 8.7, width: 53.6, height: 82.1 }, personClip: { top: 0, height: 36.7 } },
-      { image: "/images/hero/02-buero-hemd.jpg", status: "pool" as const, person: "/images/hero/02-buero-hemd-person.png", alt: "Kanzleiinhaber am Schreibtisch", role: "Steuerkanzlei", score: "7.6", frame: { left: 13.5, top: 5.6, width: 65.5, height: 83.7 } },
-      { image: "/images/hero/22-shk.jpg", person: "/images/hero/22-shk-person.png", status: "garantie" as const, alt: "Anlagenmechanikerin im Bad", role: "SHK-Betrieb", score: "8.1", frame: { left: 14.1, top: 12.3, width: 50, height: 77 }, personClip: { top: 0, height: 46.8 } },
-      { image: "/images/hero/03-buero-monitor.jpg", status: "pool" as const, person: "/images/hero/03-buero-monitor-person.png", alt: "Ingenieur am Arbeitsplatz mit Monitor", role: "Ingenieurbüro", score: "7.2", frame: { left: 13.5, top: 5.6, width: 58.5, height: 85.3 } },
-      { image: "/images/hero/19-dachdecker.jpg", person: "/images/hero/19-dachdecker-person.png", status: "garantie" as const, alt: "Dachdeckermeister auf dem Dach", role: "Dachdeckerei", score: "8.6", frame: { left: 18.5, top: 8.7, width: 59.5, height: 79.6 }, personClip: { top: 0, height: 47.8 } },
-      { image: "/images/hero/13-zfa.jpg", person: "/images/hero/13-zfa-person.png", status: "pool" as const, alt: "Zahnmedizinische Fachangestellte in der Praxis", role: "Zahnarztpraxis", score: "7.4", frame: { left: 20, top: 10.7, width: 52, height: 82.1 } },
-      { image: "/images/hero/21-kfz.jpg", person: "/images/hero/21-kfz-person.png", status: "garantie" as const, alt: "Kfz-Meister in der Werkstatt", role: "Kfz-Werkstatt", score: "8.2", frame: { left: 24.2, top: 12.3, width: 54.4, height: 78.6 }, personClip: { top: 0, height: 42.9 } },
-      { image: "/images/hero/05-buero-blazer.jpg", status: "pool" as const, person: "/images/hero/05-buero-blazer-person.png", alt: "Rechtsanwältin im Büro", role: "Anwaltskanzlei", score: "7.0", frame: { left: 19, top: 7.3, width: 59.9, height: 80.6 } },
-      { image: "/images/hero/04-baustelle-shirt.jpg", status: "garantie" as const, person: "/images/hero/04-baustelle-shirt-person.png", alt: "Bauunternehmer auf der Baustelle", role: "Bauunternehmen", score: "8.0", frame: { left: 24, top: 5.6, width: 62.7, height: 83.9 } },
-      { image: "/images/hero/14-pflege.jpg", person: "/images/hero/14-pflege-person.png", status: "pool" as const, alt: "Pflegedienstleitung mit Bewohnerin", role: "Pflegedienst", score: "7.3", frame: { left: 13.5, top: 10.3, width: 53.2, height: 77.6 }, personClip: { top: 0, height: 34.1 } },
-      { image: "/images/hero/18-schreinerin.jpg", person: "/images/hero/18-schreinerin-person.png", status: "garantie" as const, alt: "Schreinermeisterin an der Werkbank", role: "Schreinerei", score: "7.9", frame: { left: 30.8, top: 10.9, width: 52.6, height: 78.4 } },
-      { image: "/images/hero/10-einzelhandel.jpg", person: "/images/hero/10-einzelhandel-person.png", status: "pool" as const, alt: "Inhaber mit Tablet im Fachgeschäft", role: "Fachgeschäft", score: "7.1", frame: { left: 29.2, top: 8.7, width: 50.8, height: 82.1 }, personClip: { top: 0, height: 37.9 } },
-      { image: "/images/hero/20-schweisserin.jpg", person: "/images/hero/20-schweisserin-person.png", status: "garantie" as const, alt: "Schweißerin mit Schutzhelm", role: "Metallbau", score: "8.3", frame: { left: 18.1, top: 8.7, width: 61.9, height: 80.8 }, personClip: { top: 0, height: 53.8 } },
-      { image: "/images/hero/08-koch.jpg", person: "/images/hero/08-koch-person.png", status: "pool" as const, alt: "Koch mit Teller in der Küche", role: "Gastronomie", score: "6.9", frame: { left: 22, top: 8.7, width: 56, height: 84.1 }, personClip: { top: 0, height: 48.6 } },
-      { image: "/images/hero/07-werkstatt-schuerze.jpg", status: "garantie" as const, person: "/images/hero/07-werkstatt-schuerze-person.png", alt: "Handwerker in der Werkstatt", role: "Handwerksbetrieb", score: "7.8", frame: { left: 20.2, top: 8.7, width: 60.9, height: 79.6 } },
-      { image: "/images/hero/17-lager.jpg", person: "/images/hero/17-lager-person.png", status: "pool" as const, alt: "Lagerist mit Hubwagen", role: "Logistik", score: "7.0", frame: { left: 20, top: 13.1, width: 59.9, height: 79.8 }, personClip: { top: 0, height: 59.1 } },
-    ],
   },
 
   logos: {
@@ -514,20 +487,6 @@ export const site = {
     link: { label: "Ganze Referenz lesen", href: "https://www.atex-media.de/referenzen/h24" },
   },
 
-  bafa: {
-    eyebrow: "Zuschuss vom Bund",
-    headlineBold: "Wir prüfen, ob Ihr Projekt",
-    headlineLight: "förderfähig",
-    headlineBoldEnd: "ist",
-    text: "Wir sind gelisteter BAFA-Berater. Erfüllt Ihr Betrieb die Voraussetzungen, übernimmt das Förderprogramm einen Teil der Beratungskosten für Vertrieb und Marketing. Ob das bei Ihnen greift, klären wir vorab.",
-    cta: "Förderfähigkeit prüfen",
-    ctaNote: "In 60 Sekunden. Unverbindlich",
-    badgeLogo: { src: "/images/bafa-berater.png", alt: "Gelisteter BAFA-Berater, Berater-ID 228969" }, // rundes Siegel
-    image: { src: "/images/bafa.jpg", alt: "Mitarbeiter mit Headset am Arbeitsplatz" },
-    // Schild oben links auf dem Foto, ohne Bild/Avatar
-    badge: { top: "Angebot AS26214", title: "Förder-Check", status: "förderfähig", position: "top" as const, avatar: false, tone: "green" as const, checkFirst: true },
-  },
-
   stats: {
     headlineBold: "Zahlen statt",
     headlineLight: "Versprechen",
@@ -543,16 +502,77 @@ export const site = {
     highlight: { value: "14 Tage", label: "bis zum ersten gebuchten Termin, im Schnitt" }, // TODO prüfen
   },
 
+  // 08 · Kampagnen aus der Praxis: links Text, rechts zwei Handys mit Beispielmotiven (Video- und Social-Anzeige)
+  showcase: {
+    eyebrow: "08 · Kampagnen aus der Praxis",
+    badge: { title: "Beispielmotive", sub: "So sind unsere Anzeigen aufgebaut" },
+    headlineBold: "Aus Ihrem Angebot wird",
+    headlineLight: "eine Anzeige, die man versteht",
+    text: "Echte Fotos aus Ihrem Betrieb, eine klare Botschaft und ein Weg zur Anfrage, der auf dem Handy funktioniert. Die Motive rechts zeigen den Aufbau. Kampagnen unserer Kunden zeigen wir Ihnen gern im persönlichen Gespräch.",
+    chips: [
+      { icon: "camera" as const, label: "Echte Fotos" },
+      { icon: "message" as const, label: "Klare Botschaft" },
+      { icon: "send" as const, label: "Anfrage per Klick" },
+    ],
+    cta: "Beispiele im Gespräch ansehen",
+    note: "Beispielmotive zur Veranschaulichung. Kennzahlen und Kampagnen einzelner Kunden zeigen wir nur mit deren Zustimmung.",
+    video: {
+      tag: "Video-Anzeige",
+      extra: "Dreh vor Ort",
+      image: "/images/hero/22-shk.jpg",
+      title: "Ihr neues Bad",
+      sub: "Geplant und gebaut aus einer Hand",
+      duration: "0:20",
+      caption: { title: "Badsanierung im Kurzvideo", sub: "Instagram und Facebook" },
+    },
+    social: {
+      tag: "Social-Anzeige",
+      account: "Ihr Betrieb",
+      sponsored: "Gesponsert",
+      image: "/images/hero/23-elektriker.jpg",
+      headline: "PV-Anlage mit Speicher",
+      body: "Kostenlose Beratung vor Ort, im Umkreis von 40 km.",
+      button: "Jetzt anfragen",
+      caption: { title: "Photovoltaik regional beworben", sub: "Beitrag im Instagram-Feed" },
+    },
+    caption: "Zwei Beispielmotive. Den strategischen Aufbau erklären wir im Gespräch.",
+  },
+
+  // 09 · Schriftliche Zusage: links drei Schritte, rechts Beispiel-Markt-Check mit Balken, Zusage-Liste und Button
   guarantee: {
-    eyebrow: "Schriftliche Zusage",
-    headlineBold: "Erst prüfen wir.",
-    headlineLight: "Dann sagen wir zu.",
-    headlineBoldEnd: "",
-    text: "Bevor wir eine Zusage aussprechen, vergleichen wir Ihr Angebot mit Projekten aus derselben Branche und Region: Suchvolumen, Wettbewerb, Auftragswert. Passen Markt und Angebot zusammen, bekommen Sie die Zusage schriftlich. Ohne Sternchen, ohne Kleingedrucktes.",
-    cta: "Gespräch vereinbaren",
-    ctaNote: "In 60 Sekunden. Unverbindlich",
-    image: "/images/hero/20-schweisserin.jpg", // Motiv aus dem Hero (Metallbau)
-    videoLabel: "Zusage möglich", // Chip oben links (oranger Punkt wie im Hero)
+    eyebrow: "09 · Schriftliche Zusage",
+    headlineBold: "Wir rechnen Ihren Markt vorher durch.",
+    headlineLight: "Dann sagen wir schriftlich zu.",
+    text: "Bevor wir starten, prüfen wir Ihre Region: Wie oft wird Ihr Angebot gesucht, wie viele Mitbewerber werben, was kostet eine Anfrage? Aus diesen Werten und den Ergebnissen vergleichbarer Projekte entsteht eine Prognose. Was wir sicher erreichen können, sagen wir Ihnen schriftlich zu, noch bevor Sie uns beauftragen.",
+    steps: [
+      { title: "Markt-Check Ihrer Region", text: "Suchvolumen, Wettbewerb und typische Auftragswerte in Ihrem Gebiet. Bevor Sie einen Euro ausgeben." },
+      { title: "Prognose aus Vergleichsprojekten", text: "Wir legen Ihr Angebot neben Projekte aus derselben Branche und rechnen aus, wie viele Anfragen realistisch sind." },
+      { title: "Zusage auf Papier", text: "Liegt Ihr Markt über unserem Schwellwert, sagen wir Ihnen eine Anzahl geprüfter Anfragen schriftlich zu. Ohne Sternchen." },
+    ],
+    bafa: {
+      logo: { src: "/images/bafa-berater.png", alt: "Gelisteter BAFA-Berater, Berater-ID 228969" },
+      text: "Zusätzlich prüfen wir als gelisteter BAFA-Berater, ob ein Teil der Beratungskosten gefördert werden kann.",
+    },
+    panel: {
+      eyebrow: "Beispiel: Markt-Check Region Regensburg",
+      offer: "Angebot: Badsanierung",
+      status: "Zusage möglich",
+      // Beispielwerte zur Veranschaulichung
+      rows: [
+        { label: "Suchanfragen pro Monat", sub: "im Umkreis von 40 km", value: "3.100", ratio: 0.78, tone: "accent" as const }, // TODO prüfen
+        { label: "Mitbewerber mit Anzeigen", sub: "in derselben Region", value: "12", ratio: 0.3, tone: "navy" as const }, // TODO prüfen
+        { label: "Erwartete geprüfte Anfragen", sub: "in 90 Tagen", value: "45 bis 60", ratio: 0.6, tone: "success" as const }, // TODO prüfen
+        { label: "Markt-Score", sub: "aus Nachfrage, Wettbewerb und Auftragswert", value: "8.4 / 10", ratio: 0.84, tone: "accent" as const }, // TODO prüfen
+      ],
+      promiseTitle: "Was wir schriftlich zusagen:",
+      promises: [
+        "Eine Mindestzahl geprüfter Anfragen in einem festen Zeitraum",
+        "Für welche Region und welches Angebot die Zusage gilt",
+        "Was passiert, falls wir die Zahl nicht erreichen",
+      ],
+      note: "Den Markt-Check bekommen Sie kostenlos, noch vor dem ersten Auftrag.",
+      cta: "Markt-Check anfragen",
+    },
   },
 
   journey: {
