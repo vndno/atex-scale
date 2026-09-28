@@ -1,5 +1,3 @@
-import { existsSync } from "fs";
-import path from "path";
 import { site } from "@/content/site";
 import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
@@ -14,7 +12,8 @@ import { CaseStudy } from "@/components/sections/CaseStudy";
 import { Showcase } from "@/components/sections/Showcase";
 import { Guarantee } from "@/components/sections/Guarantee";
 import { Stats } from "@/components/sections/Stats";
-import { Journey, Faq } from "@/components/sections/Accordions";
+import { Faq } from "@/components/sections/Accordions";
+import { References } from "@/components/sections/References";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Footer } from "@/components/sections/Footer";
 
@@ -32,8 +31,6 @@ const faqJsonLd = {
 };
 
 export default function Home() {
-  // Beim Build prüfen, welche Bilder der Kundenreise bereits vorliegen
-  const journeyImages = site.journey.items.map((it) => existsSync(path.join(process.cwd(), "public", it.image)));
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
@@ -51,7 +48,7 @@ export default function Home() {
         <Showcase />
         <Guarantee />
         <Stats />
-        <Journey available={journeyImages} />
+        <References />
         <Faq />
         <FinalCta />
       </main>

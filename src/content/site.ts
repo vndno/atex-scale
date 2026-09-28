@@ -487,21 +487,6 @@ export const site = {
     link: { label: "Ganze Referenz lesen", href: "https://www.atex-media.de/referenzen/h24" },
   },
 
-  stats: {
-    headlineBold: "Zahlen statt",
-    headlineLight: "Versprechen",
-    text: "Was seit 2018 aus der Arbeit mit über 280 Betrieben und Kanzleien entstanden ist.",
-    clients: { value: "280+", label: "Betriebe und Kanzleien" }, // TODO prüfen
-    // Kundenporträts in der Kachel (quadratisch, ~160×160), Dateien in /public/images/kunden/
-    clientAvatars: ["/images/kunden/01.jpg", "/images/kunden/02.jpg", "/images/kunden/03.jpg", "/images/kunden/04.jpg", "/images/kunden/05.jpg", "/images/kunden/06.jpg"],
-    items: [
-      { value: "24 h", label: "bis jede Anfrage qualifiziert ist" }, // TODO prüfen
-      { value: "8 Kanäle", label: "pro Kampagne, aus einer Hand" },
-      { value: "seit 2018", label: "Kampagnen für den Mittelstand" },
-    ],
-    highlight: { value: "14 Tage", label: "bis zum ersten gebuchten Termin, im Schnitt" }, // TODO prüfen
-  },
-
   // 08 · Kampagnen aus der Praxis: links Text, rechts zwei Handys mit Beispielmotiven (Video- und Social-Anzeige)
   showcase: {
     eyebrow: "08 · Kampagnen aus der Praxis",
@@ -575,33 +560,78 @@ export const site = {
     },
   },
 
-  journey: {
-    eyebrow: "Die Kundenreise",
-    headlineBold: "Welche Kontaktpunkte hat Ihr Kunde,",
-    headlineLight: "bevor er anfragt?",
-    text: "Wer eine Sanierung, einen Steuerberater oder einen neuen Lieferanten sucht, schaut zuerst bei Google, auf Instagram und auf Ihrer Webseite nach. Was dort zu sehen ist, entscheidet, ob eine Anfrage kommt oder nicht.",
-    // Jeder Reiter hat sein eigenes Bild (public/images/journey/…); beim Klick wird weich überblendet
+  // Zahlenband: vier Kennzahlen in einer Reihe
+  stats: {
+    items: [
+      { value: "280+", label: "Betriebe und Kanzleien", sub: "begleitet von der Atex Media Gruppe" }, // TODO prüfen
+      { value: "seit 2018", label: "für den Mittelstand", sub: "aus Regensburg" },
+      { value: "24 h", label: "bis zur Prüfung", sub: "jeder einzelnen Anfrage" }, // TODO prüfen
+      { value: "10", label: "Menschen im Team", sub: "Beratung, Kampagnen, Foto, Web" }, // TODO prüfen
+    ],
+  },
+
+  // 10 · Referenzen: sechs Projekte der Atex Media Gruppe (Angaben nach atex-media.de/referenzen).
+  // quote leer = Projektbeschreibung; mit freigegebenem Kundenzitat wird stattdessen das Zitat gezeigt.
+  references: {
+    eyebrow: "10 · Referenzen",
+    headlineBold: "Projekte aus dem Mittelstand,",
+    headlineLight: "umgesetzt von der Atex Media Gruppe",
+    cta: { label: "Alle Referenzen", href: "https://www.atex-media.de/referenzen" },
+    linkLabel: "Referenz ansehen",
     items: [
       {
-        title: "Social Media",
-        text: "Kurze Einblicke in Betrieb, Team und fertige Projekte bauen Vertrauen auf, lange bevor jemand mit Ihnen spricht.",
-        href: "#",
-        image: "/images/journey/social-media.jpg",
-        alt: "Social-Media-Anzeigen und Beiträge eines Betriebs auf dem Smartphone",
+        client: "H24 GmbH",
+        short: "H24",
+        industry: "B2B-Software",
+        text: "Landingpages je Produkt, Entwicklung in Webflow und Suchmaschinenoptimierung. Anfragen aus ganz Deutschland kommen über die Landingpages in den Vertrieb.",
+        tag: "Landingpages",
+        href: "https://www.atex-media.de/referenzen/h24",
+        quote: "", // TODO Kundenzitat einholen
       },
       {
-        title: "Landingpage",
-        text: "Eine Seite für genau ein Angebot, die auf dem Handy funktioniert, echte Fotos zeigt und eine Anfrage in zwei Minuten möglich macht.",
-        href: "#",
-        image: "/images/journey/landingpage.jpg", // TODO Bild ablegen (Querformat ~1400×920); bis dahin Platzhalter
-        alt: "Beispiele von Landingpages am Desktop und Smartphone",
+        client: "Deventer Engineering",
+        short: "DE",
+        industry: "Energieberatung",
+        text: "Neue Webseite in Webflow, Suchmaschinenoptimierung und Leadgenerierung für die Energieberatung.",
+        tag: "Leadgenerierung",
+        href: "https://www.atex-media.de/referenzen/deventer-engineering",
+        quote: "", // TODO Kundenzitat einholen
       },
       {
-        title: "Webseite",
-        text: "Wirkt Ihr Unternehmen online veraltet, springen viele ab, bevor sie Ihr Angebot überhaupt gelesen haben.",
-        href: "#",
-        image: "/images/journey/webseite.jpg",
-        alt: "Vier Unternehmens-Webseiten im Überblick",
+        client: "Innengrün",
+        short: "IG",
+        industry: "Onlinehandel",
+        text: "Onlineshop auf Shopify, neues Webdesign und die Betreuung der Social-Media-Kanäle aus einer Hand.",
+        tag: "Onlineshop",
+        href: "https://www.atex-media.de/referenzen/innengrun",
+        quote: "", // TODO Kundenzitat einholen
+      },
+      {
+        client: "2raumkonzept",
+        short: "2R",
+        industry: "Architektur",
+        text: "Relaunch der Webseite mit neuem Design, eigenem CMS und Fotografie vor Ort.",
+        tag: "Relaunch",
+        href: "https://www.atex-media.de/referenzen/2raumkonzept",
+        quote: "", // TODO Kundenzitat einholen
+      },
+      {
+        client: "Ingenieurbüro Gruber + Partner",
+        short: "GP",
+        industry: "Ingenieurwesen",
+        text: "Relaunch in Webflow, ein neues Erscheinungsbild und eine eigene Karriereseite.",
+        tag: "Rebranding",
+        href: "https://www.atex-media.de/referenzen/ingenieurburo-gruber-partner",
+        quote: "", // TODO Kundenzitat einholen
+      },
+      {
+        client: "Ahlborn Ingenieure",
+        short: "AI",
+        industry: "Ingenieurwesen",
+        text: "Relaunch in Webflow mit CMS und Suchmaschinenoptimierung, damit das Büro online gefunden wird.",
+        tag: "Sichtbarkeit",
+        href: "https://www.atex-media.de/referenzen/ahlborn-ingenieure",
+        quote: "", // TODO Kundenzitat einholen
       },
     ],
   },
@@ -742,12 +772,12 @@ export const site = {
       items: [
         { label: "Startseite", href: "/" },
         { label: "Leistungen", href: "/#leistungen" },
+        { label: "Ablauf", href: "/#ablauf" },
+        { label: "Methode", href: "/#methode" },
         { label: "Referenzen", href: "/#referenzen" },
-        { label: "Kundenreise", href: "/#karriere" },
+        { label: "Zusage", href: "/#zusage" },
         { label: "Über uns", href: "/ueber-uns" },
-        { label: "Landingpages", href: "/#karriereseite" },
         { label: "Karriere", href: "https://www.atex-media.de/karriere" },
-        { label: "FAQ", href: "/#faq" },
         { label: "Kontakt", href: "/kontakt" },
       ],
     },
