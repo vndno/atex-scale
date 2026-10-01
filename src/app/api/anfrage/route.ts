@@ -8,7 +8,7 @@ import { NextResponse } from "next/server";
  *   CONTACT_WEBHOOK_URL  → alternativ/zusätzlich: POST der Anfrage als JSON (Zapier, Make, n8n …)
  *   RESEND_API_KEY       → zusätzlich: E-Mail-Benachrichtigung über Resend an NOTIFY_TO
  *   NOTIFY_TO            → Empfänger der Benachrichtigung (Standard: meier@atex-media.de)
- *   NOTIFY_FROM          → Absender (Standard: "Atex Scale Webseite <anfrage@versand.atex-jobs.de>", Domain muss bei Resend verifiziert sein)
+ *   NOTIFY_FROM          → Absender (Standard: "Atex Scale Webseite <anfrage@versand.atex-media.de>", Domain muss bei Resend verifiziert sein)
  * Ist weder Close noch Webhook gesetzt, antwortet die Route mit 503 und das Formular zeigt Telefon/E-Mail als Ausweg.
  * Die E-Mail ist ein Zusatz: Schlägt nur sie fehl, gilt die Anfrage trotzdem als zugestellt.
  */
@@ -102,8 +102,8 @@ async function createCloseLead(apiKey: string, d: { name: string; company: strin
 
 async function sendNotification(d: { name: string; company: string; phone: string; email: string; source: string; receivedAt: string }) {
   const to = process.env.NOTIFY_TO || "meier@atex-media.de";
-  // Bei Resend ist die Subdomain versand.atex-jobs.de verifiziert – der Absender muss darauf enden
-  const from = process.env.NOTIFY_FROM || "Atex Scale Webseite <anfrage@versand.atex-jobs.de>";
+  // Bei Resend ist die Subdomain versand.atex-media.de verifiziert (seit Okt. 2026, vorher versand.atex-jobs.de) – der Absender muss darauf enden
+  const from = process.env.NOTIFY_FROM || "Atex Scale Webseite <anfrage@versand.atex-media.de>";
   const esc = (v: string) => v.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c] as string);
   const when = new Date(d.receivedAt).toLocaleString("de-DE", { timeZone: "Europe/Berlin" });
   const html = `<div style="font:15px/1.6 -apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#121c29">

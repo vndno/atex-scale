@@ -42,7 +42,7 @@ Formular, Cookie-Hinweis, Rechtsseiten, SEO-Gerüst bleiben.
 | Code | GitHub, Konto `vndno`, privates Repo je Projekt |
 | Hosting | Vercel, Import aus GitHub, jeder Push auf `main` geht automatisch live (30–60 s) |
 | CRM | Close (REST-API aus der Vercel-Funktion) |
-| Mail | Resend, Absenderdomain `versand.atex-jobs.de` (bereits verifiziert, kann für alle Atex-Marken genutzt werden) |
+| Mail | Resend, Absenderdomain `versand.atex-media.de` (bereits verifiziert, kann für alle Atex-Marken genutzt werden) |
 | Termine | Calendly `https://calendly.com/hopfner-atex-media/erstgespraech-christianhopfner` |
 | Nicht verwenden | Lokaler Dev-Server (auf dem Mac gibt es kein Node/npm), Google Fonts, Lovable |
 
@@ -86,9 +86,9 @@ Reihenfolge einhalten, jeder Schritt dauert wenige Minuten.
    Ergebnis: `https://<repo-name>.vercel.app`. Claude die Adresse nennen.
 4. **Umgebungsvariablen** (Vercel → Projekt → Settings → Environment Variables), jeweils Häkchen bei **Production und Preview**:
    - `CLOSE_API_KEY` – neuer Schlüssel pro Projekt aus Close (Settings → Developer → API Keys → New), **Sensitive** anhaken
-   - `RESEND_API_KEY` – neuer Schlüssel aus Resend (API Keys → Create, Sending access, Domain `versand.atex-jobs.de`), **Sensitive**
+   - `RESEND_API_KEY` – neuer Schlüssel aus Resend (API Keys → Create, Sending access, Domain `versand.atex-media.de`), **Sensitive**
    - `NOTIFY_TO` – Empfängeradresse der Benachrichtigung (Standard meier@atex-media.de)
-   - `NOTIFY_FROM` – optional, Standard „<Marke> Webseite <anfrage@versand.atex-jobs.de>“
+   - `NOTIFY_FROM` – optional, Standard „<Marke> Webseite <anfrage@versand.atex-media.de>“
    - `NEXT_PUBLIC_SITE_URL` – erst setzen, wenn die eigene Domain live ist (`https://www.<domain>`), vorher **nicht anlegen**
      (ein leerer Wert hat beim ersten Atex-Scale-Build den Fehler „Invalid URL“ ausgelöst; der Code fängt das inzwischen ab)
    Danach Deployments → letztes Deployment → **Redeploy**. Werte als „Sensitive“ sind später nicht mehr einsehbar, deshalb pro
@@ -178,7 +178,7 @@ Calendly Christian Hopfner: https://calendly.com/hopfner-atex-media/erstgespraec
 BAFA-Berater-ID 228969
 Close Custom Fields: Lead-Quelle custom.cf_A3uckuhX5CK9TaxeTrWAvHBzALiBM91OG12k8kr3ZSi (Text),
                      Lead-Kanal custom.cf_xQgVdBgrXBDwJMkCrvp0Li35U0hVeFnc7XMCyxHjwkO (Auswahl, Wert „Website“)
-Resend-Absenderdomain: versand.atex-jobs.de (verifiziert)
+Resend-Absenderdomain: versand.atex-media.de (verifiziert)
 Figma AtexJobs (Hero-Kacheln, Mockups): Key Yu46JDPRhYAeTIREiUrGN9 – Uploads per curl -F nur als einzelne Befehle
 Team (Über uns): Daniel Meier (GF), Christian Hopfner, Thomas Huber, Calvin Okoh, Kaan Ocaktan (Strategieberatung),
   Dominik Moggert (Accountmanagement), Liliia Mkhytarian (Projektmanagement, Webentwicklung), Bator Pisch (Projektmanagement),

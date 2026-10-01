@@ -46,7 +46,7 @@ Repo `vndno/atexjobs`, live www.atex-jobs.de) – gleiche Komponenten, gleiche O
 - Bildbearbeitung ohne PIL: `sips` (Größe/Format/Zuschnitt), `qlmanage` (SVG→PNG). Figma-Datei (AtexJobs-Kacheln):
   Key `Yu46JDPRhYAeTIREiUrGN9`; Uploads per `curl -F` nur als einzelne Top-Level-Befehle.
 - Kontaktformular → `src/app/api/anfrage/route.ts`: Close-Lead mit Lead-Quelle „Inbound: Webseite - AtexScale“,
-  Lead-Kanal „Website“; Mail über Resend (Absender anfrage@versand.atex-jobs.de, Domain ist verifiziert).
+  Lead-Kanal „Website“; Mail über Resend (Absender anfrage@versand.atex-media.de, Domain ist verifiziert).
 
 ## Aufbau der Startseite (seit 28.09.2026 nach trimando.at)
 Hero mit Netzwerk-Grafik → Logo-Band (dunkel) → `#engpass` 01 → `#leistungen` 02 System → `#ablauf` 03 → `#warum` 04 →
